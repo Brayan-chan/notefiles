@@ -10,7 +10,7 @@ class Principal extends Controller
         #echo 'Hola mundo'; #Mensaje de prueba de la conexión exitosa
 
         #Creamos la variable title el cual reutilizaremos
-        $data['title'] = 'Iniciar sesión';
+        $data['title'] = 'Notefiles';
 
         #Llamamos a una vista 
         $this->views->getView('principal', 'index', $data);
