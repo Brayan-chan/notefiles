@@ -19,6 +19,14 @@ Dentro del proyecto, verás las siguientes carpetas y archivos:
 ```
 ## 😎 Avances
 
-<div class="center">
+<div align="center">
+  
+ > Idea de Ejemplo
+
   <img src='avances/idea.png'>
+
+> Avance 20/10/2024
+
+  <img src='avances/avance1.png'>
+
 </div>
