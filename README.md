@@ -29,4 +29,8 @@ Dentro del proyecto, verás las siguientes carpetas y archivos:
 
   <img src='avances/avance1.png'>
 
+> Avance2 20/10/2024
+
+  <img src='avances/avance2.png'>
+
 </div>
