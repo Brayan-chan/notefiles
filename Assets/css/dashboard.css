@@ -1,0 +1,11 @@
+.card_link {
+    font-weight: bold;
+    text-decoration: none;
+    color: #000;
+    font-size: 18px;
+}
+
+#events-card:hover {
+    background: hsla(0, 0%, 100%, 0.1);
+    backdrop-filter: blur(30px);
+}

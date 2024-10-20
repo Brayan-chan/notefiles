@@ -1,0 +1,12 @@
+[contenteditable]:empty:before {
+    content: attr(data-placeholder);
+    color: #888;
+}
+.comment-text.collapsed {
+    overflow: hidden;
+    max-height: 4.5rem; /* Limita la altura a 3 líneas de texto */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+

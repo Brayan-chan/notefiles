@@ -1,0 +1,33 @@
+.bienvenida {
+    color: #34385E;
+}
+
+.Empresa {
+    color: #FEC329;
+}
+
+* {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+a {
+    font-weight: bold;
+}
+
+.btn-primary {
+    background-color: #34385E;
+}
+
+.btn-primary:hover {
+    background-color: #FEC329;
+    color: black;
+}
+
+.crear-cuenta:hover {
+    color: #FEC329;
+}
+
+.float-end:hover {
+    color: #FEC329;
+}
