@@ -29,9 +29,8 @@
     <link href="<?php echo BASE_URL . 'Assets/css/main.min.css'; ?>" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL . 'Assets/plugins/DataTables/datatables.min.css'; ?>">
     <link href="<?php echo BASE_URL . 'Assets/css/dashboard.css'; ?>" rel="stylesheet">
-    <link href="<?php echo BASE_URL . 'Assets/css/comentarios.css'; ?>" rel="stylesheet">
-    <link href="<?php echo BASE_URL . 'Assets/css/cajaComentarios.css'; ?>" rel="stylesheet">
     <link href="<?php echo BASE_URL . 'Assets/css/mobile.css'; ?>" rel="stylesheet">
+    <link href="<?php echo BASE_URL . 'Assets/css/custom.css'; ?>" rel="stylesheet">
 
     <link rel="icon" type="image/png" sizes="32x32" href="<?php echo BASE_URL . 'Assets/images/favicon.ico'; ?>" />
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo BASE_URL . 'Assets/images/notefiles.png'; ?>" />
@@ -55,10 +54,10 @@
             <div class="app-menu">
                 <ul class="accordion-menu">
                     <li>
-                        <a href="#"><i class="material-icons">home</i>Inicio</a>
+                        <a class="new-note-btn" href="#">NUEVA NOTA <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                     </li>
                     <li class="sidebar-title">
-                        Apps
+                        Historial
                     </li>
                     <li class=""> <!-- Se puede agregar la clase active-page para que el icono aparezca activo -->
                         <!-- Mandamos a llamar al controlador asistencias -->
@@ -79,23 +78,12 @@
                         <a href="<?php echo BASE_URL . 'reportes'; ?>"><i class="material-icons">article</i>Reportes</a>
                     </li>
                     <li>
-                        <!-- Mandamos a llamar al controlador ranking -->
-                        <a href="#"><i class="material-icons">hotel_class</i>Ranking</a>
-                    </li>
-                    <li>
-                        <!-- Mandamos a llamar al controlador estadisticas -->
-                        <a href="#"><i class="material-icons">leaderboard</i>Estádisticas</a>
-                    </li>
-                    <li>
                         <!-- Mandamos a llamar al controlador comentarios -->
                         <a href="<?php echo BASE_URL . 'comentarios'; ?>"><i class="material-icons">comment</i>Comentarios<span class="badge rounded-pill badge-success float-end">14</span></a>
                     </li>
+                    <hr>
                     <li>
-                        <!-- El class="active" es para que aparezca el menu activo -->
-                        <a href="<?php echo BASE_URL . 'usuarios'; ?>" class="active"><i class="material-icons">person</i>Usuarios</a>
-                    </li>
-                    <li>
-                        <a href="<?php echo BASE_URL . 'principal/salir'; ?>" class="exit-mobile"><i class="material-icons">logout</i>Cerrar sesión</a>
+                        <a class="new-note-btn" href="#">COLABORAR <i class="fa-solid fa-building"></i></a>
                     </li>
                 </ul>
             </div>
@@ -117,22 +105,19 @@
                                 </li>
                                 <li class="nav-item dropdown hidden-on-mobile">
                                     <a class="nav-link dropdown-toggle" href="#" id="addDropdownLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="material-icons">add</i>
+                                        <i class="material-icons">book</i><span class="name-note">Nombre de la nota <span class="categoria">Tareas</span></span>
                                     </a>
+                                    <!-- Esta lista la utilizaremos para las categorias de nota -->
                                     <ul class="dropdown-menu" aria-labelledby="addDropdownLink">
-                                        <li><a class="dropdown-item" href="#">New Workspace</a></li>
-                                        <li><a class="dropdown-item" href="#">New Board</a></li>
-                                        <li><a class="dropdown-item" href="#">Create Project</a></li>
+                                        <li><a class="dropdown-item" href="#">Tareas</a></li>
+                                        <li><a class="dropdown-item" href="#">Ideas</a></li>
+                                        <li><a class="dropdown-item" href="#">Proyectos</a></li>
                                     </ul>
                                 </li>
                             </ul>
-
                         </div>
                         <div class="d-flex">
                             <ul class="navbar-nav">
-                                <li class="nav-item">
-                                    <a class="nav-link toggle-search" href="#"><i class="material-icons">search</i></a>
-                                </li>
                                 <li class="nav-item hidden-on-mobile">
                                     <a class="nav-link nav-notifications-toggle" id="notificationsDropDown" href="#" data-bs-toggle="dropdown"><i class="material-icons" id="settingsIcon">settings</i></a>
                                     <div class="dropdown-menu dropdown-menu-end notifications-dropdown" aria-labelledby="notificationsDropDown">

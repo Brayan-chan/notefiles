@@ -6,15 +6,6 @@
     color: #FEC329;
 }
 
-* {
-    font-weight: bold;
-    font-size: 20px;
-}
-
-a {
-    font-weight: bold;
-}
-
 .btn-primary {
     background-color: #34385E;
 }
@@ -30,4 +21,11 @@ a {
 
 .float-end:hover {
     color: #FEC329;
+}
+
+.app-menu ul li a.new-note-btn {
+    margin-inline: 50px;
+    border: 2px solid black;
+    text-align: center;
+    border-radius: 10px;
 }
