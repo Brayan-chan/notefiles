@@ -59,31 +59,155 @@
                     <li class="sidebar-title">
                         Historial
                     </li>
-                    <li class=""> <!-- Se puede agregar la clase active-page para que el icono aparezca activo -->
-                        <!-- Mandamos a llamar al controlador asistencias -->
-                        <a href="#"><i class="material-icons">fact_check</i>Asistencias</a>
-                    </li>
-                    <li>
-                        <!-- Mandamos a llamar al controlador eventos -->
-                        <a href="<?php echo BASE_URL . 'admin'; ?>"><i class="material-icons">theater_comedy</i>Eventos<span class="badge rounded-pill badge-danger float-end">87<!-- Agregar el número de eventos --></span></a>
-                    </li>
-                    <li>
-                        <a href="<?php echo BASE_URL . 'cartelera'; ?>"><i class="material-icons">movie</i>Cartelera</a>
-                    </li>
-                    <li>
-                        <a href="<?php echo BASE_URL . 'galerias'; ?>"><i class="material-icons">collections</i>Galerías</a>
-                    </li>
-                    <li>
-                        <!-- Mandamos a llamar al controlador reportes -->
-                        <a href="<?php echo BASE_URL . 'reportes'; ?>"><i class="material-icons">article</i>Reportes</a>
-                    </li>
-                    <li>
-                        <!-- Mandamos a llamar al controlador comentarios -->
-                        <a href="<?php echo BASE_URL . 'comentarios'; ?>"><i class="material-icons">comment</i>Comentarios<span class="badge rounded-pill badge-success float-end">14</span></a>
-                    </li>
+                    <ul class="note-list">
+                        <li>
+                            <a href="#">
+                                <div class="note-item">
+                                    <div class="note-icon">
+                                        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968890.png" alt="Nota Icono">
+                                    </div>
+                                    <div class="note-details">
+                                        <div class="note-title">
+                                            Motor Edege
+                                        </div>
+                                        <div class="note-category">
+                                            Ideas
+                                        </div>
+                                    </div>
+                                    <div class="note-date">20 oct →</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="note-item">
+                                    <div class="note-icon">
+                                        <img src="https://elcomercio.pe/resizer/v2/XZLIR22TE5ECTFSKSYA2UVMFMQ.jpg?auth=b5f6688ab5050fc1a210341f9c54008f76980cb038f537aad97f072232565fb0&width=1200&height=810&quality=90&smart=true" alt="Nota Icono">
+                                    </div>
+                                    <div class="note-details">
+                                        <div class="note-title">
+                                            Meta AI
+                                        </div>
+                                        <div class="note-category">
+                                            Tareas
+                                        </div>
+                                    </div>
+                                    <div class="note-date">18 oct →</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="note-item">
+                                    <div class="note-icon">
+                                        <img src="https://i.pinimg.com/736x/c3/e4/bb/c3e4bb7464bb8d8f57243b4a1dfebfec.jpg" alt="Nota Icono">
+                                    </div>
+                                    <div class="note-details">
+                                        <div class="note-title">
+                                            TareasWord
+                                        </div>
+                                        <div class="note-category">
+                                            Tareas
+                                        </div>
+                                    </div>
+                                    <div class="note-date">17 oct →</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="note-item">
+                                    <div class="note-icon">
+                                        <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="Nota Icono">
+                                    </div>
+                                    <div class="note-details">
+                                        <div class="note-title">
+                                            GitHubProjects
+                                        </div>
+                                        <div class="note-category">
+                                            Proyectos
+                                        </div>
+                                    </div>
+                                    <div class="note-date">10 oct →</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="note-item">
+                                    <div class="note-icon">
+                                        <img src="https://img.icons8.com/?size=512&id=9OGIyU8hrxW5&format=png" alt="Nota Icono">
+                                    </div>
+                                    <div class="note-details">
+                                        <div class="note-title">
+                                            VisualProjects
+                                        </div>
+                                        <div class="note-category">
+                                            Proyectos
+                                        </div>
+                                    </div>
+                                    <div class="note-date">8 oct →</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="note-item">
+                                    <div class="note-icon">
+                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdZlkVJk93uK_JWHnKPWR1pqifjtFlwv4aPg&s" alt="Nota Icono">
+                                    </div>
+                                    <div class="note-details">
+                                        <div class="note-title">
+                                            MyClassroom
+                                        </div>
+                                        <div class="note-category">
+                                            Tareas
+                                        </div>
+                                    </div>
+                                    <div class="note-date">30 sept →</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="note-item">
+                                    <div class="note-icon">
+                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStpongnnyMifunqjxbRUe0a-H0FaW_FBmtrQ&s" alt="Nota Icono">
+                                    </div>
+                                    <div class="note-details">
+                                        <div class="note-title">
+                                            JiraProjects
+                                        </div>
+                                        <div class="note-category">
+                                            Proyectos
+                                        </div>
+                                    </div>
+                                    <div class="note-date">28 sept →</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="note-item">
+                                    <div class="note-icon">
+                                        <img src="https://cdn-icons-png.flaticon.com/512/2875/2875411.png" alt="Nota Icono">
+                                    </div>
+                                    <div class="note-details">
+                                        <div class="note-title">
+                                            Workspace
+                                        </div>
+                                        <div class="note-category">
+                                            Tareas
+                                        </div>
+                                    </div>
+                                    <div class="note-date">27 sept →</div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
                     <hr>
-                    <li>
-                        <a class="new-note-btn" href="#">COLABORAR <i class="fa-solid fa-building"></i></a>
+                    <li class="sidebar-footer">
+                        <a class="new-colaborate" href="#">COLABORAR <i class="fa-solid fa-building"></i></a>
                     </li>
                 </ul>
             </div>
@@ -162,7 +286,7 @@
         </div>
     </div>
 
-        
+
     <script src="<?php echo BASE_URL . 'Assets/js/pages/animaciones.js'; ?>"></script>
     <script src="<?php echo BASE_URL . 'Assets/plugins/jquery/jquery-3.5.1.min.js'; ?>"></script>
     <script src="<?php echo BASE_URL . 'Assets/plugins/bootstrap/js/popper.min.js'; ?>"></script>
