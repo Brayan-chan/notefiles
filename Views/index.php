@@ -29,9 +29,7 @@
     <link href="<?php echo BASE_URL . 'Assets/css/main.min.css'; ?>" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL . 'Assets/plugins/DataTables/datatables.min.css'; ?>">
     <link href="<?php echo BASE_URL . 'Assets/css/dashboard.css'; ?>" rel="stylesheet">
-    <link href="<?php echo BASE_URL . 'Assets/css/mobile.css'; ?>" rel="stylesheet">
     <link href="<?php echo BASE_URL . 'Assets/css/custom.css'; ?>" rel="stylesheet">
-
     <link rel="icon" type="image/png" sizes="32x32" href="<?php echo BASE_URL . 'Assets/images/favicon.ico'; ?>" />
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo BASE_URL . 'Assets/images/notefiles.png'; ?>" />
 </head>
@@ -365,13 +363,17 @@
                         </div>
                     </div>
                 </div>
-                <div class="note-content" contenteditable="true" id="dragContainer">
-                
+                <div id="note-container" class="note-content">
+                    <div class="page">
+                        <div class="page-content" contenteditable="true" id="editor">
+                            <!-- Div para el editor -->
+                        </div>
+                    </div>
                 </div>
-                <div class="card">
+                <div class="card position-fixed bottom-0 start-50 translate-middle-x w-75"><!-- Cuando el sidebar se expanda deve adaptarse-->
                     <div class="row">
                         <div class="col">
-                            <div class="top-functions d-flex justify-content-between p-3 mx-3">
+                            <div class="bottom-functions d-flex justify-content-between p-3 mx-3">
                                 <button>
                                     <i class="material-icons">
                                         format_bold
@@ -456,6 +458,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/interactjs@1.10.12"></script>
+    <script src="<?php echo BASE_URL . 'Assets/js/pagination.js'; ?>"></script>
     <script src="<?php echo BASE_URL . 'Assets/js/drag-custom.js'; ?>"></script>
     <script src="<?php echo BASE_URL . 'Assets/js/pages/animaciones.js'; ?>"></script>
     <script src="<?php echo BASE_URL . 'Assets/plugins/jquery/jquery-3.5.1.min.js'; ?>"></script>

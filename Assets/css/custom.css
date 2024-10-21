@@ -91,11 +91,31 @@ a {
     border: 2px solid black;
     border-radius: 10px;
     padding: 5px;
-    height: 460px;
-    overflow-y: scroll;
+    height: 600px; /* Tamaño visible del contenedor */
+    overflow-y: scroll; /* Habilitar scroll */
     overflow-x: hidden;
     margin-bottom: 20px;
     padding: 20px;
+    position: relative;
+}
+
+.page {
+    width: 60%;
+    height: 1000px; /* Tamaño de una página simulada */
+    margin-bottom: 20px;
+    margin: 0 auto;
+    position: relative;
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 20px;
+}
+
+.page-content {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    white-space: pre-wrap; /* Mantener saltos de línea */
 }
 
 #dragContainer img {
@@ -104,4 +124,4 @@ a {
     display: block; /* Evita que se comporte como inline */
     margin: 0 auto; /* Centra la imagen */
     cursor: move; /* Cambia el cursor cuando pasas sobre la imagen */
-  }
+}
