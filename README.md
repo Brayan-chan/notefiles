@@ -1,4 +1,4 @@
-# Inicio basico deL proyecto notefiles
+# Inicio basico del proyecto notefiles
 
 ## 🚀 Estructura del proyecto
 
