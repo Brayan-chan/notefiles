@@ -365,7 +365,92 @@
                         </div>
                     </div>
                 </div>
-                
+                <div class="note-content" contenteditable="true">
+
+                </div>
+                <div class="card">
+                    <div class="row">
+                        <div class="col">
+                            <div class="top-functions d-flex justify-content-between p-3 mx-3">
+                                <button>
+                                    <i class="material-icons">
+                                        format_bold
+                                    </i>
+                                </button>
+                                <button>
+                                    <i class="material-icons">
+                                        format_italic
+                                    </i>
+                                </button>
+                                <button>
+                                    <i class="material-icons">
+                                        format_underlined
+                                    </i>
+                                </button>
+                                <button>
+                                    <i class="material-icons">
+                                        format_strikethrough
+                                    </i>
+                                </button>
+                                <button>
+                                    <i class="material-icons">
+                                        format_color_text
+                                    </i>
+                                </button>
+                                <button>
+                                    <i class="material-icons">
+                                        format_color_fill
+                                    </i>
+                                </button>
+                                <button>
+                                    <i class="material-icons">
+                                        format_color_reset
+                                    </i>
+                                </button>
+                                <button>
+                                    <i class="material-icons">
+                                        format_align_left
+                                    </i>
+                                </button>
+                                <button>
+                                    <i class="material-icons">
+                                        format_align_center
+                                    </i>
+                                </button>
+                                <button>
+                                    <i class="material-icons">
+                                        format_align_right
+                                    </i>
+                                </button>
+                                <button>
+                                    <i class="material-icons">
+                                        format_align_justify
+                                    </i>
+                                </button>
+                                <button>
+                                    <i class="material-icons">
+                                        format_list_bulleted
+                                    </i>
+                                </button>
+                                <button>
+                                    <i class="material-icons">
+                                        format_list_numbered
+                                    </i>
+                                </button>
+                                <button>
+                                    <i class="material-icons">
+                                        checklist_rtl
+                                    </i>
+                                </button>
+                                <button>
+                                    <i class="material-icons">
+                                        add_link
+                                    </i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
