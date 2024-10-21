@@ -365,8 +365,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="note-content" contenteditable="true">
-
+                <div class="note-content" contenteditable="true" id="dragContainer">
+                
                 </div>
                 <div class="card">
                     <div class="row">
@@ -455,7 +455,8 @@
         </div>
     </div>
 
-
+    <script src="https://cdn.jsdelivr.net/npm/interactjs@1.10.12"></script>
+    <script src="<?php echo BASE_URL . 'Assets/js/drag-custom.js'; ?>"></script>
     <script src="<?php echo BASE_URL . 'Assets/js/pages/animaciones.js'; ?>"></script>
     <script src="<?php echo BASE_URL . 'Assets/plugins/jquery/jquery-3.5.1.min.js'; ?>"></script>
     <script src="<?php echo BASE_URL . 'Assets/plugins/bootstrap/js/popper.min.js'; ?>"></script>
