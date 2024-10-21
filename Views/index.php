@@ -370,7 +370,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="card position-fixed bottom-0 start-50 translate-middle-x w-75"><!-- Cuando el sidebar se expanda deve adaptarse-->
+                <!-- Corregir el tamaño del card con js, eliminar todas las clases-->
+                <div class="card position-fixed align-content-stretch bottom-0 start-50 translate-middle-x w-25 sidebar-hidden w-75"><!-- Cuando el sidebar se muestre se calcula el tamaño del card-->
                     <div class="row">
                         <div class="col">
                             <div class="bottom-functions d-flex justify-content-between p-3 mx-3">
