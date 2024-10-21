@@ -70,7 +70,7 @@
                                         <div class="note-title">
                                             Motor Edege
                                         </div>
-                                        <div class="note-category">
+                                        <div class="note-category ideas">
                                             Ideas
                                         </div>
                                     </div>
@@ -88,7 +88,7 @@
                                         <div class="note-title">
                                             Meta AI
                                         </div>
-                                        <div class="note-category">
+                                        <div class="note-category tareas">
                                             Tareas
                                         </div>
                                     </div>
@@ -106,7 +106,7 @@
                                         <div class="note-title">
                                             TareasWord
                                         </div>
-                                        <div class="note-category">
+                                        <div class="note-category tareas">
                                             Tareas
                                         </div>
                                     </div>
@@ -124,7 +124,7 @@
                                         <div class="note-title">
                                             GitHubProjects
                                         </div>
-                                        <div class="note-category">
+                                        <div class="note-category proyectos">
                                             Proyectos
                                         </div>
                                     </div>
@@ -142,7 +142,7 @@
                                         <div class="note-title">
                                             VisualProjects
                                         </div>
-                                        <div class="note-category">
+                                        <div class="note-category proyectos">
                                             Proyectos
                                         </div>
                                     </div>
@@ -160,7 +160,7 @@
                                         <div class="note-title">
                                             MyClassroom
                                         </div>
-                                        <div class="note-category">
+                                        <div class="note-category tareas">
                                             Tareas
                                         </div>
                                     </div>
@@ -178,7 +178,7 @@
                                         <div class="note-title">
                                             JiraProjects
                                         </div>
-                                        <div class="note-category">
+                                        <div class="note-category proyectos">
                                             Proyectos
                                         </div>
                                     </div>
@@ -196,7 +196,7 @@
                                         <div class="note-title">
                                             Workspace
                                         </div>
-                                        <div class="note-category">
+                                        <div class="note-category tareas">
                                             Tareas
                                         </div>
                                     </div>
@@ -213,12 +213,6 @@
             </div>
         </div>
         <div class="app-container">
-            <div class="search">
-                <form>
-                    <input class="form-control" type="text" placeholder="Type here..." aria-label="Search">
-                </form>
-                <a href="#" class="toggle-search"><i class="material-icons">close</i></a>
-            </div>
             <div class="app-header">
                 <nav class="navbar navbar-light navbar-expand-lg">
                     <div class="container-fluid">
@@ -281,7 +275,97 @@
             </div>
             <div class="app-content">
                 <div class="content-wrapper">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col">
+                                <div class="card">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="top-functions d-flex justify-content-between p-3 mx-3">
+                                                <button>
+                                                    <i class="material-icons">
+                                                        format_bold
+                                                    </i>
+                                                </button>
+                                                <button>
+                                                    <i class="material-icons">
+                                                        format_italic
+                                                    </i>
+                                                </button>
+                                                <button>
+                                                    <i class="material-icons">
+                                                        format_underlined
+                                                    </i>
+                                                </button>
+                                                <button>
+                                                    <i class="material-icons">
+                                                        format_strikethrough
+                                                    </i>
+                                                </button>
+                                                <button>
+                                                    <i class="material-icons">
+                                                        format_color_text
+                                                    </i>
+                                                </button>
+                                                <button>
+                                                    <i class="material-icons">
+                                                        format_color_fill
+                                                    </i>
+                                                </button>
+                                                <button>
+                                                    <i class="material-icons">
+                                                        format_color_reset
+                                                    </i>
+                                                </button>
+                                                <button>
+                                                    <i class="material-icons">
+                                                        format_align_left
+                                                    </i>
+                                                </button>
+                                                <button>
+                                                    <i class="material-icons">
+                                                        format_align_center
+                                                    </i>
+                                                </button>
+                                                <button>
+                                                    <i class="material-icons">
+                                                        format_align_right
+                                                    </i>
+                                                </button>
+                                                <button>
+                                                    <i class="material-icons">
+                                                        format_align_justify
+                                                    </i>
+                                                </button>
+                                                <button>
+                                                    <i class="material-icons">
+                                                        format_list_bulleted
+                                                    </i>
+                                                </button>
+                                                <button>
+                                                    <i class="material-icons">
+                                                        format_list_numbered
+                                                    </i>
+                                                </button>
+                                                <button>
+                                                    <i class="material-icons">
+                                                        checklist_rtl
+                                                    </i>
+                                                </button>
+                                                <button>
+                                                    <i class="material-icons">
+                                                        add_link
+                                                    </i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                
             </div>
         </div>
     </div>

@@ -74,3 +74,16 @@ a {
     transform: scale(0.95);
     transition: all 0.2s ease-in-out;
 }
+
+.tareas {
+    color: green;
+}
+
+.proyectos {
+    color: blue;
+}
+
+.ideas {
+    color: red;
+}
+
