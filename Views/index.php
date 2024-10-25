@@ -13,6 +13,10 @@
     <title><?php echo $data['title']; ?></title>
 
     <!-- Styles -->
+    <script src="<?php echo BASE_URL . 'Assets/js/format.js'; ?>"></script>
+    <script src="<?php echo BASE_URL . 'Assets/js/addImage.js'; ?>"></script>
+    <script src="<?php echo BASE_URL . 'Assets/js/aligns.js'; ?>"></script>
+    <script src="<?php echo BASE_URL . 'Assets/js/addLink.js'; ?>"></script>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -23,13 +27,13 @@
     <link href="<?php echo BASE_URL . 'Assets/plugins/pace/pace.css'; ?>" rel="stylesheet">
     <link href="<?php echo BASE_URL . 'Assets/plugins/highlight/styles/github-gist.css'; ?>" rel="stylesheet">
     <link href="<?php echo BASE_URL . 'Assets/plugins/fullcalendar/lib/main.min.css'; ?>" rel="stylesheet">
-    <link href="<?php echo BASE_URL . 'Assets/plugins/summernote/summernote-lite.min.css'; ?>" rel="stylesheet">
 
     <!-- Theme Styles -->
     <link href="<?php echo BASE_URL . 'Assets/css/main.min.css'; ?>" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL . 'Assets/plugins/DataTables/datatables.min.css'; ?>">
     <link href="<?php echo BASE_URL . 'Assets/css/dashboard.css'; ?>" rel="stylesheet">
     <link href="<?php echo BASE_URL . 'Assets/css/custom.css'; ?>" rel="stylesheet">
+    <link href="<?php echo BASE_URL . 'Assets/css/formats.css'; ?>" rel="stylesheet">
     <link rel="icon" type="image/png" sizes="32x32" href="<?php echo BASE_URL . 'Assets/images/favicon.ico'; ?>" />
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo BASE_URL . 'Assets/images/notefiles.png'; ?>" />
 </head>
@@ -280,27 +284,27 @@
                                     <div class="row">
                                         <div class="col">
                                             <div class="top-functions d-flex justify-content-between p-3 mx-3">
-                                                <button>
+                                                <button onclick="applyFormat('bold')">
                                                     <i class="material-icons">
                                                         format_bold
                                                     </i>
                                                 </button>
-                                                <button>
+                                                <button onclick="applyFormat('italic')">
                                                     <i class="material-icons">
                                                         format_italic
                                                     </i>
                                                 </button>
-                                                <button>
+                                                <button onclick="applyFormat('underline')">
                                                     <i class="material-icons">
                                                         format_underlined
                                                     </i>
                                                 </button>
-                                                <button>
+                                                <button onclick="applyFormat('strikethrough')">
                                                     <i class="material-icons">
                                                         format_strikethrough
                                                     </i>
                                                 </button>
-                                                <button>
+                                                <button onclick="applyFormat('foreColor')">
                                                     <i class="material-icons">
                                                         format_color_text
                                                     </i>
@@ -315,17 +319,17 @@
                                                         format_color_reset
                                                     </i>
                                                 </button>
-                                                <button>
+                                                <button onclick="applyAlign('justifyLeft')">
                                                     <i class="material-icons">
                                                         format_align_left
                                                     </i>
                                                 </button>
-                                                <button>
+                                                <button onclick="applyAlign('justifyCenter')">
                                                     <i class="material-icons">
                                                         format_align_center
                                                     </i>
                                                 </button>
-                                                <button>
+                                                <button onclick="applyAlign('justifyRight')">
                                                     <i class="material-icons">
                                                         format_align_right
                                                     </i>
@@ -350,7 +354,7 @@
                                                         checklist_rtl
                                                     </i>
                                                 </button>
-                                                <button>
+                                                <button onclick="addLink()">
                                                     <i class="material-icons">
                                                         add_link
                                                     </i>
@@ -375,11 +379,13 @@
                     <div class="row">
                         <div class="col">
                             <div class="bottom-functions d-flex justify-content-between p-3 mx-3">
-                                <button>
+                                <label for="image-upload" id="image-upload-label">
+                                <button onclick="addImage()">
                                     <i class="material-icons">
-                                        format_bold
+                                        image
                                     </i>
                                 </button>
+                                </label>
                                 <button>
                                     <i class="material-icons">
                                         format_italic
