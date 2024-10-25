@@ -88,11 +88,10 @@ a {
 }
 
 .note-content {
-    border: 2px solid black;
     border-radius: 10px;
     padding: 5px;
-    height: 600px; /* Tamaño visible del contenedor */
-    overflow-y: scroll; /* Habilitar scroll */
+    height: 600px;
+    overflow-y: scroll; 
     overflow-x: hidden;
     margin-bottom: 20px;
     padding: 20px;
