@@ -334,7 +334,7 @@
                                                         format_align_right
                                                     </i>
                                                 </button>
-                                                <button>
+                                                <button onclick="applyAlign('justifyFull')">
                                                     <i class="material-icons">
                                                         format_align_justify
                                                     </i>
