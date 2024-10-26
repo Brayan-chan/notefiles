@@ -6,16 +6,41 @@ Dentro del proyecto, verás las siguientes carpetas y archivos:
 
 ```text
 /
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+├── Assets/
+│   ├── css/
+│   │   ├── horizontal-menu/
+│   ├── images/
+│   │   ├── avatars/
+│   │   ├── backgrounds/
+│   │   ├── cards/
+│   │   ├── flags/
+│   │   ├── icons/
+│   │   ├── other/
+│   │   ├── widgets/
+│   ├── js/
+│   │   └── addImage.js
+│   │   └── addLink.js
+│   │   └── aligns.js
+│   │   └── drag-custom.js
+│   │   └── format.js
+│   │   └── pagination.js
+│   │   └── pages/
+│   ├── plugins/
+│   │   ├── bootstrap/
+│   │   ├── perfectscroll/
+├── Config/
+│   ├── App/
+│   └── Coonfig.php
+├── Views/
+│   └── index.php
+├── avances/
+│   └── avance1.png
+│   └── avance2.png
+│   └── avance3.png
+│   └── avance4.png
+│   └── idea.png
+└── README.md
+└── index.php
 ```
 ## 😎 Avances
 
