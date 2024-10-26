@@ -13,6 +13,10 @@ let selectedColor = '#000000';
 
 function createColorGrid() {
     const colorGrid = document.getElementById('colorGrid');
+    if (!colorGrid) {
+        console.error('Color grid element not found');
+        return;
+    }
     colors.forEach(row => {
         row.forEach(color => {
             const cell = document.createElement('button');
@@ -33,7 +37,10 @@ function selectColor(color) {
 }
 
 function updateColorIndicator() {
-    document.getElementById('colorIndicator').style.backgroundColor = selectedColor;
+    const colorIndicator = document.getElementById('colorIndicator');
+    if (colorIndicator) {
+        colorIndicator.style.backgroundColor = selectedColor;
+    }
 }
 
 function updateSelectedCell() {
@@ -47,16 +54,63 @@ function updateSelectedCell() {
 
 function toggleColorPicker() {
     const picker = document.getElementById('colorPicker');
-    picker.style.display = picker.style.display === 'none' ? 'block' : 'none';
+    const button = document.getElementById('colorPickerButton');
+    if (picker && button) {
+        const buttonRect = button.getBoundingClientRect();
+        picker.style.display = picker.style.display === 'none' ? 'block' : 'none';
+        picker.style.top = `${buttonRect.bottom}px`;
+        picker.style.left = `${buttonRect.left}px`;
+    }
 }
 
 function applyColorToSelection(color) {
-    const selection = window.getSelection();
-    if (selection.rangeCount > 0) {
-        const range = selection.getRangeAt(0);
-        const span = document.createElement('span');
-        span.style.color = color;
-        range.surroundContents(span);
+    document.execCommand('foreColor', false, color);
+}
+
+function openCustomColorPicker() {
+    const customPicker = document.getElementById('customColorPicker');
+    if (customPicker) {
+        customPicker.style.display = 'block';
+        updateCustomColorPicker(selectedColor);
+    }
+}
+
+function updateCustomColorPicker(color) {
+    const rgb = hexToRgb(color);
+    document.getElementById('hexInput').value = color;
+    document.getElementById('rInput').value = rgb.r;
+    document.getElementById('gInput').value = rgb.g;
+    document.getElementById('bInput').value = rgb.b;
+    document.getElementById('colorPreview').style.backgroundColor = color;
+    // Update gradient and slider (complex color conversion logic needed)
+}
+
+function hexToRgb(hex) {
+    const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16)
+    } : null;
+}
+
+function rgbToHex(r, g, b) {
+    return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+}
+
+function cancelCustomColor() {
+    const customPicker = document.getElementById('customColorPicker');
+    if (customPicker) {
+        customPicker.style.display = 'none';
+    }
+}
+
+function acceptCustomColor() {
+    const hexInput = document.getElementById('hexInput');
+    if (hexInput) {
+        const hex = hexInput.value;
+        selectColor(hex);
+        document.getElementById('customColorPicker').style.display = 'none';
     }
 }
 
@@ -74,7 +128,35 @@ function activateEyedropper() {
     });
 }
 
-// Initialize the color grid and set the default color
-createColorGrid();
-updateColorIndicator();
-updateSelectedCell();
+// Wait for the DOM to be fully loaded before initializing
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize the color grid and set the default color
+    createColorGrid();
+    updateColorIndicator();
+    updateSelectedCell();
+
+    // Add event listeners for custom color picker
+    const colorGradient = document.getElementById('colorGradient');
+    if (colorGradient) {
+        colorGradient.addEventListener('click', function(e) {
+            // Update color based on click position (complex color calculation logic needed)
+        });
+    }
+
+    const colorSlider = document.getElementById('colorSlider');
+    if (colorSlider) {
+        colorSlider.addEventListener('input', function(e) {
+            // Update gradient based on hue (complex color calculation logic needed)
+        });
+    }
+
+    ['hexInput', 'rInput', 'gInput', 'bInput'].forEach(id => {
+        const input = document.getElementById(id);
+        if (input) {
+            input.addEventListener('input', function(e) {
+                // Update color preview and other inputs based on the changed input
+                // (complex color conversion logic needed)
+            });
+        }
+    });
+});
