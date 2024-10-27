@@ -156,19 +156,20 @@
                             </i>
                         </button>
                     </label>
-                    <button>
+                    <button id="savePDF">
                         <i class="material-icons">
-                            format_italic
+                            picture_as_pdf
                         </i>
                     </button>
-                    <button>
+                    <button id="saveWord">
                         <i class="material-icons">
-                            format_underlined
+                            description
                         </i>
                     </button>
-                    <button>
+                    <input type="file" id="fileInput" accept=".txt,.docx" class="hidden" />
+                    <button id="importButton">
                         <i class="material-icons">
-                            format_strikethrough
+                            upload_file
                         </i>
                     </button>
                     <button>
