@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor de Notas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.0/mammoth.browser.min.js"></script>
+    <style>
+        .dark-mode {
+            background-color: #1f1f1f;
+            color: #ffffff;
+        }
+        .block-menu {
+            display: none;
+            position: absolute;
+            background-color: #2d2d2d;
+            border: 1px solid #444;
+            border-radius: 4px;
+            padding: 8px;
+        }
+        #editor img {
+            max-width: 100%;
+            height: auto;
+            cursor: move;
+        }
+        #editor img:hover {
+            outline: 2px solid #3b82f6;
+        }
+    </style>
+</head>
+<body class="dark-mode">
+    <div class="container mx-auto p-4">
+        <header class="flex justify-between items-center mb-4">
+            <h1 class="text-2xl font-bold">Editor de Notas</h1>
+            <div>
+                <input type="file" id="fileInput" accept=".txt,.docx" class="hidden" />
+                <button id="importButton" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-2">
+                    Importar Archivo
+                </button>
+                <button id="saveWord" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2">
+                    Guardar como Word
+                </button>
+                <button id="savePDF" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                    Guardar como PDF
+                </button>
+            </div>
+        </header>
+        <div id="editor" class="bg-gray-800 p-4 rounded-lg min-h-screen" contenteditable="true">
+            <h2 class="text-xl font-semibold mb-2">Enfoques en la investigación</h2>
+            <p>Haz clic para agregar un bloque debajo</p>
+        </div>
+    </div>
+    <div id="blockMenu" class="block-menu">
+        <button class="block text-left py-1 px-2 hover:bg-gray-700 w-full" data-type="text">Texto</button>
+        <button class="block text-left py-1 px-2 hover:bg-gray-700 w-full" data-type="heading">Encabezado</button>
+        <button class="block text-left py-1 px-2 hover:bg-gray-700 w-full" data-type="list">Lista</button>
+    </div>
+
+    <script>
+        const editor = document.getElementById('editor');
+        const blockMenu = document.getElementById('blockMenu');
+        const fileInput = document.getElementById('fileInput');
+        const importButton = document.getElementById('importButton');
+
+        editor.addEventListener('click', (e) => {
+            if (e.target === editor) {
+                showBlockMenu(e.clientY, e.clientX);
+            }
+        });
+
+        function showBlockMenu(top, left) {
+            blockMenu.style.display = 'block';
+            blockMenu.style.top = `${top}px`;
+            blockMenu.style.left = `${left}px`;
+        }
+
+        blockMenu.addEventListener('click', (e) => {
+            if (e.target.tagName === 'BUTTON') {
+                const type = e.target.getAttribute('data-type');
+                addBlock(type);
+                blockMenu.style.display = 'none';
+            }
+        });
+
+        function addBlock(type) {
+            let element;
+            switch (type) {
+                case 'text':
+                    element = document.createElement('p');
+                    element.textContent = 'Nuevo párrafo';
+                    break;
+                case 'heading':
+                    element = document.createElement('h3');
+                    element.textContent = 'Nuevo encabezado';
+                    element.className = 'text-lg font-semibold mt-4 mb-2';
+                    break;
+                case 'list':
+                    element = document.createElement('ul');
+                    element.innerHTML = '<li>Nuevo elemento de lista</li>';
+                    element.className = 'list-disc ml-6';
+                    break;
+            }
+            editor.appendChild(element);
+        }
+
+        document.addEventListener('click', (e) => {
+            if (!blockMenu.contains(e.target) && e.target !== editor) {
+                blockMenu.style.display = 'none';
+            }
+        });
+
+        // Manejo de pegado de imágenes
+        editor.addEventListener('paste', (e) => {
+            e.preventDefault();
+            const items = (e.clipboardData || e.originalEvent.clipboardData).items;
+            for (const item of items) {
+                if (item.type.indexOf('image') !== -1) {
+                    const blob = item.getAsFile();
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                        const img = document.createElement('img');
+                        img.src = event.target.result;
+                        img.style.width = '300px'; // Tamaño inicial
+                        img.setAttribute('data-original-width', img.naturalWidth);
+                        img.setAttribute('data-original-height', img.naturalHeight);
+                        img.setAttribute('data-current-width', '300');
+                        img.setAttribute('data-current-height', (300 * img.naturalHeight / img.naturalWidth).toFixed(0));
+                        editor.appendChild(img);
+                        makeImageResizable(img);
+                    };
+                    reader.readAsDataURL(blob);
+                } else if (item.type === 'text/plain') {
+                    item.getAsString((text) => {
+                        document.execCommand('insertText', false, text);
+                    });
+                }
+            }
+        });
+
+        // Hacer las imágenes redimensionables
+        function makeImageResizable(img) {
+            img.addEventListener('mousedown', initResize, false);
+
+            function initResize(e) {
+                window.addEventListener('mousemove', resize, false);
+                window.addEventListener('mouseup', stopResize, false);
+            }
+
+            function resize(e) {
+                const rect = editor.getBoundingClientRect();
+                const newWidth = e.clientX - rect.left - img.offsetLeft;
+                const aspectRatio = img.naturalHeight / img.naturalWidth;
+                const newHeight = newWidth * aspectRatio;
+                img.style.width = newWidth + 'px';
+                img.style.height = newHeight + 'px';
+                img.setAttribute('data-current-width', newWidth.toFixed(0));
+                img.setAttribute('data-current-height', newHeight.toFixed(0));
+            }
+
+            function stopResize(e) {
+                window.removeEventListener('mousemove', resize, false);
+                window.removeEventListener('mouseup', stopResize, false);
+            }
+        }
+
+        // Funcionalidad para guardar como Word
+        document.getElementById('saveWord').addEventListener('click', () => {
+            const content = editor.cloneNode(true);
+            content.querySelectorAll('img').forEach(img => {
+                const currentWidth = img.getAttribute('data-current-width');
+                const currentHeight = img.getAttribute('data-current-height');
+                img.style.width = currentWidth + 'px';
+                img.style.height = currentHeight + 'px';
+                img.width = currentWidth;
+                img.height = currentHeight;
+            });
+
+            const blob = new Blob([`
+                <html>
+                    <head>
+                        <meta charset="UTF-8">
+                        <style>
+                            body { font-family: Arial, sans-serif; }
+                            img { max-width: 100%; }
+                        </style>
+                    </head>
+                    <body>
+                        ${content.innerHTML}
+                    </body>
+                </html>
+            `], { type: 'application/msword' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'documento.doc';
+            link.click();
+        });
+
+        // Funcionalidad para guardar como PDF
+        document.getElementById('savePDF').addEventListener('click', async () => {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            
+            const canvas = await html2canvas(editor, { 
+                scale: 2,
+                useCORS: true,
+                logging: false,
+                allowTaint: true
+            });
+            const imgData = canvas.toDataURL('image/png');
+            
+            const imgWidth = 210; // A4 width in mm
+            const pageHeight = 295; // A4 height in mm
+            const imgHeight = canvas.height * imgWidth / canvas.width;
+            let heightLeft = imgHeight;
+            let position = 0;
+
+            doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+            heightLeft -= pageHeight;
+
+            while (heightLeft >= 0) {
+                position = heightLeft - imgHeight;
+                doc.addPage();
+                doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                heightLeft -= pageHeight;
+            }
+
+            doc.save('documento.pdf');
+        });
+
+        // Funcionalidad para importar archivos
+        importButton.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        fileInput.addEventListener('change', async (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            if (file.name.endsWith('.txt')) {
+                const text = await file.text();
+                editor.innerHTML = `<p>${text.replace(/\n/g, '</p><p>')}</p>`;
+            } else if (file.name.endsWith('.docx')) {
+                const arrayBuffer = await file.arrayBuffer();
+                const result = await mammoth.convertToHtml({arrayBuffer: arrayBuffer});
+                editor.innerHTML = result.value;
+            }
+        });
+    </script>
+</body>
+</html>
