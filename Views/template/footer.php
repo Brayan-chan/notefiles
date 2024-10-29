@@ -3,7 +3,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.0/mammoth.browser.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/interactjs@1.10.12"></script>
 <script src="<?php echo BASE_URL . 'Assets/js/pagination.js'; ?>"></script>
-<script src="<?php echo BASE_URL . 'Assets/js/drag-custom.js'; ?>"></script>
+<script src="<?php echo BASE_URL . 'Assets/js/saveUpload.js'; ?>"></script>
 <script src="<?php echo BASE_URL . 'Assets/js/pages/animaciones.js'; ?>"></script>
 <script src="<?php echo BASE_URL . 'Assets/plugins/jquery/jquery-3.5.1.min.js'; ?>"></script>
 <script src="<?php echo BASE_URL . 'Assets/plugins/bootstrap/js/popper.min.js'; ?>"></script>
