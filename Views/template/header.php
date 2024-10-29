@@ -15,7 +15,6 @@
     <!-- Styles -->
     <script src="<?php echo BASE_URL . 'Assets/js/colorPicker.js'; ?>"></script>
     <script src="<?php echo BASE_URL . 'Assets/js/format.js'; ?>"></script>
-    <script src="<?php echo BASE_URL . 'Assets/js/addImage.js'; ?>"></script>
     <script src="<?php echo BASE_URL . 'Assets/js/aligns.js'; ?>"></script>
     <script src="<?php echo BASE_URL . 'Assets/js/addLink.js'; ?>"></script>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
