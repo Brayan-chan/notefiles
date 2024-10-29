@@ -69,4 +69,8 @@ Dentro del proyecto, verás las siguientes carpetas y archivos:
 > Avance5 27/10/2024
 
   <img src='avances/avance5.png'>
+
+> Avance6 29/10/2024
+
+  <img src='avances/avance6.png'>
 </div>
