@@ -117,10 +117,15 @@ a {
     white-space: pre-wrap; /* Mantener saltos de línea */
 }
 
-#dragContainer img {
-    max-width: 100%; /* Asegura que la imagen no exceda el tamaño del contenedor */
-    height: auto; /* Mantiene la proporción de la imagen */
-    display: block; /* Evita que se comporte como inline */
-    margin: 0 auto; /* Centra la imagen */
-    cursor: move; /* Cambia el cursor cuando pasas sobre la imagen */
+#editor img.interactive-image {
+    max-width: 100%;
+    height: auto;
+    cursor: move;
+    touch-action: none;
+    user-select: none;
+    position: absolute;
+}
+
+#editor img.interactive-image:hover {
+    outline: 2px solid #3b82f6;
 }
