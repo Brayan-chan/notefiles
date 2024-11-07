@@ -18,10 +18,10 @@
     <script src="<?php echo BASE_URL . 'Assets/js/aligns.js'; ?>"></script>
     <script src="<?php echo BASE_URL . 'Assets/js/addLink.js'; ?>"></script>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL . 'Assets/css/Fontawesome.css'; ?>">
+    <link rel="stylesheet" href="<?php echo BASE_URL . 'Assets/css/Materialicons.css'; ?>">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
     <link href="<?php echo BASE_URL . 'Assets/plugins/bootstrap/css/bootstrap.min.css'; ?>" rel="stylesheet">
     <link href="<?php echo BASE_URL . 'Assets/plugins/perfectscroll/perfect-scrollbar.css'; ?>" rel="stylesheet">
     <link href="<?php echo BASE_URL . 'Assets/plugins/pace/pace.css'; ?>" rel="stylesheet">
@@ -57,7 +57,7 @@
             <div class="app-menu">
                 <ul class="accordion-menu">
                     <li>
-                        <a class="new-note-btn" href="#">NUEVA NOTA <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        <a class="new-note-btn" href="#">NUEVA NOTA <i class="material-icons">add_box</i></a>
                     </li>
                     <li class="sidebar-title">
                         Historial
@@ -193,7 +193,8 @@
                             <a href="#">
                                 <div class="note-item">
                                     <div class="note-icon">
-                                        <img src="https://cdn-icons-png.flaticon.com/512/2875/2875411.png" alt="Nota Icono">
+                                    <img src="<?php echo BASE_URL . 'Assets/images/docs.png'; ?>" alt="Nota Icono">
+
                                     </div>
                                     <div class="note-details">
                                         <div class="note-title">
@@ -210,7 +211,7 @@
                     </ul>
                     <hr>
                     <li class="sidebar-footer">
-                        <a class="new-colaborate" href="#">COLABORAR <i class="fa-solid fa-building"></i></a>
+                        <a class="new-colaborate" href="#">COLABORAR <i class="material-icons">group</i></a>
                     </li>
                 </ul>
             </div>

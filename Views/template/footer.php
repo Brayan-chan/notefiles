@@ -1,7 +1,7 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.0/mammoth.browser.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/interactjs@1.10.12"></script>
+<script src="<?php echo BASE_URL . 'Assets/js/pdf.js'; ?>"></script>
+<script src="<?php echo BASE_URL . 'Assets/js/word.js'; ?>"></script>
+<script src="<?php echo BASE_URL . 'Assets/js/carga.js'; ?>"></script>
+<script src="<?php echo BASE_URL . 'Assets/js/interact.js'; ?>"></script>
 <script src="<?php echo BASE_URL . 'Assets/js/pagination.js'; ?>"></script>
 <script src="<?php echo BASE_URL . 'Assets/js/saveUpload.js'; ?>"></script>
 <script src="<?php echo BASE_URL . 'Assets/js/pages/animaciones.js'; ?>"></script>
