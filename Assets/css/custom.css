@@ -133,6 +133,11 @@ a {
     outline: 2px solid #3b82f6;
 }
 
+.app-sidebar {
+    overflow-y: scroll; 
+    overflow-x: hidden;
+}
+
 @media (min-width: 480px) {
     .page {
         width: 60%;
