@@ -1,88 +1,19 @@
-const editor = document.getElementById("editor");
+const peer = new Peer();
+
+// Variables
+let connections = [];
+const editor = document.getElementById('editor');
 const fileInput = document.getElementById("fileInput");
 const importButton = document.getElementById("importButton");
+const imageUpload = document.getElementById('image-upload');
+let isTyping = false;
 
-// Manejo de pegado de imágenes
-editor.addEventListener("paste", function (event) {
-    const clipboardData = event.clipboardData || window.clipboardData;
-    const items = clipboardData.items;
-
-    for (let i = 0; i < items.length; i++) {
-        if (items[i].type.indexOf("image") !== -1) {
-            const blob = items[i].getAsFile();
-            const reader = new FileReader();
-
-            reader.onload = function (e) {
-                const img = document.createElement("img");
-                img.src = e.target.result;
-                img.className = "interactive-image";
-                img.style.width = "300px";
-                img.style.height = "auto";
-                img.style.position = "absolute";
-                img.style.left = "0px";
-                img.style.top = "0px";
-                editor.appendChild(img);
-                makeImageInteractive(img);
-            };
-
-            reader.readAsDataURL(blob);
-            event.preventDefault();
-            return;
-        }
-    }
-});
-
-// Hacer las imágenes interactivas
-function makeImageInteractive(img) {
-    interact(img)
-        .draggable({
-            inertia: true,
-            modifiers: [
-                interact.modifiers.restrictRect({
-                    restriction: 'parent',
-                    endOnly: true
-                })
-            ],
-            autoScroll: true,
-            listeners: {
-                move: dragMoveListener,
-            }
-        })
-        .resizable({
-            edges: { left: true, right: true, bottom: true, top: true },
-            listeners: {
-                move: resizeMoveListener
-            },
-        });
-}
-
-function dragMoveListener(event) {
-    var target = event.target;
-    var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx;
-    var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
-
-    target.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
-
-    target.setAttribute('data-x', x);
-    target.setAttribute('data-y', y);
-}
-
-function resizeMoveListener(event) {
-    var target = event.target;
-    var x = (parseFloat(target.getAttribute('data-x')) || 0);
-    var y = (parseFloat(target.getAttribute('data-y')) || 0);
-
-    target.style.width = event.rect.width + 'px';
-    target.style.height = event.rect.height + 'px';
-
-    x += event.deltaRect.left;
-    y += event.deltaRect.top;
-
-    target.style.transform = 'translate(' + x + 'px,' + y + 'px)';
-
-    target.setAttribute('data-x', x);
-    target.setAttribute('data-y', y);
-}
+// Modal y botón de colaborar
+const collaborateButton = document.getElementById('collaborate-button');
+const collaborateModal = document.getElementById('collaborate-modal');
+const modalPeerId = document.getElementById('modal-peer-id');
+const copyButton = document.getElementById('copy-button');
+const closeModal = document.getElementById('close-modal');
 
 // Funcionalidad para guardar como Word
 document.getElementById('saveWord').addEventListener('click', () => {
@@ -176,3 +107,203 @@ fileInput.addEventListener('change', async (e) => {
         editor.innerHTML = result.value;
     }
 });
+
+// Mostrar el ID de peer del usuario y actualizar el input en el modal
+peer.on('open', (id) => {
+    modalPeerId.value = id; // Mostrar el Peer ID en el modal
+    console.log('Mi ID de Peer es:', id);
+});
+
+// Mostrar el modal al hacer clic en el botón "Colaborar"
+collaborateButton.addEventListener('click', () => {
+    collaborateModal.classList.remove('hidden');
+});
+
+// Cerrar el modal
+closeModal.addEventListener('click', () => {
+    collaborateModal.classList.add('hidden');
+});
+
+// Copiar el Peer ID al portapapeles
+copyButton.addEventListener('click', () => {
+    navigator.clipboard.writeText(modalPeerId.value).then(() => {
+        alert('Peer ID copiado al portapapeles');
+    }).catch((err) => {
+        console.error('Error al copiar al portapapeles:', err);
+    });
+});
+
+// Conectar al peer con el ID especificado en el modal
+document.getElementById('connect-button').addEventListener('click', () => {
+    const connectToId = document.getElementById('connect-to-id').value;
+    if (connectToId) {
+        const conn = peer.connect(connectToId);
+        setupNewConnection(conn);
+    }
+});
+
+// Configuración de la conexión y otras funcionalidades
+peer.on('connection', (conn) => {
+    setupNewConnection(conn);
+});
+
+function setupNewConnection(conn) {
+    if (!connections.includes(conn)) {
+        connections.push(conn);
+    }
+
+    conn.on('open', () => {
+        conn.send({ type: 'initial', content: editor.innerHTML });
+    });
+
+    conn.on('data', (data) => {
+        if (data.type === 'update' && !isTyping) {
+            editor.innerHTML = data.content;
+            broadcastChange(data.content, conn);
+        } else if (data.type === 'initial') {
+            editor.innerHTML = data.content;
+        } else if (data.type === 'new-image') {
+            insertImageInEditor(data.data);
+        }
+    });
+
+    conn.on('close', () => {
+        connections = connections.filter((c) => c !== conn);
+    });
+}
+
+function broadcastChange(content, originConn) {
+    connections.forEach((conn) => {
+        if (conn !== originConn && conn.open) {
+            conn.send({ type: 'update', content: content });
+        }
+    });
+}
+
+editor.addEventListener('input', () => {
+    isTyping = true;
+    const content = editor.innerHTML;
+    connections.forEach((conn) => {
+        if (conn.open) {
+            conn.send({ type: 'update', content: content });
+        }
+    });
+    setTimeout(() => { isTyping = false; }, 100);
+});
+
+// Manejo de pegado de imágenes
+editor.addEventListener("paste", function (event) {
+    const clipboardData = event.clipboardData || window.clipboardData;
+    const items = clipboardData.items;
+
+    for (let i = 0; i < items.length; i++) {
+        if (items[i].type.indexOf("image") !== -1) {
+            const blob = items[i].getAsFile();
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                const base64Image = e.target.result;
+                insertImageInEditor(base64Image);
+                broadcastImage(base64Image);
+            };
+
+            reader.readAsDataURL(blob);
+            event.preventDefault();
+            return;
+        }
+    }
+});
+
+function insertImageInEditor(base64Image) {
+    const img = document.createElement("img");
+    img.src = base64Image;
+    img.className = "interactive-image";
+    img.style.width = "300px";
+    img.style.height = "auto";
+    img.style.position = "absolute";
+    img.style.left = "0px";
+    img.style.top = "0px";
+    editor.appendChild(img);
+    makeImageInteractive(img);
+}
+
+function broadcastImage(base64Image) {
+    connections.forEach((conn) => {
+        if (conn.open) {
+            conn.send({ type: 'new-image', data: base64Image });
+        }
+    });
+}
+
+// Hacer las imágenes interactivas
+function makeImageInteractive(img) {
+    interact(img)
+        .draggable({
+            inertia: true,
+            modifiers: [
+                interact.modifiers.restrictRect({
+                    restriction: 'parent',
+                    endOnly: true
+                })
+            ],
+            autoScroll: true,
+            listeners: {
+                move: dragMoveListener,
+            }
+        })
+        .resizable({
+            edges: { left: true, right: true, bottom: true, top: true },
+            listeners: {
+                move: resizeMoveListener
+            },
+        });
+}
+
+function dragMoveListener(event) {
+    var target = event.target;
+    var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx;
+    var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+
+    target.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
+
+    target.setAttribute('data-x', x);
+    target.setAttribute('data-y', y);
+}
+
+function resizeMoveListener(event) {
+    var target = event.target;
+    var x = (parseFloat(target.getAttribute('data-x')) || 0);
+    var y = (parseFloat(target.getAttribute('data-y')) || 0);
+
+    target.style.width = event.rect.width + 'px';
+    target.style.height = event.rect.height + 'px';
+
+    x += event.deltaRect.left;
+    y += event.deltaRect.top;
+
+    target.style.transform = 'translate(' + x + 'px,' + y + 'px)';
+
+    target.setAttribute('data-x', x);
+    target.setAttribute('data-y', y);
+}
+
+// Funcionalidad de carga de imagen
+imageUpload.addEventListener('change', () => {
+    const file = imageUpload.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = () => {
+            const base64Image = reader.result;
+            insertImageInEditor(base64Image);
+            broadcastImage(base64Image);
+        };
+        reader.readAsDataURL(file);
+    }
+});
+
+// Manejo de errores de peer
+peer.on('error', (err) => {
+    console.error(err);
+});
+
+
