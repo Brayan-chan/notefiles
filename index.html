@@ -55,8 +55,9 @@
                         <img src="Assets/images/logo.png">
                         <span class="activity-indicator"></span>
                         <!-- ABRIR ETIQUETA DE PHP PARA MOSTRAR EL NOMBRE DEL USUARIO Y EL CORREO -->
-                        <span class="user-info-text">Usuario<br><span
-                                class="user-state-info">CorreoUsuario</span></span>
+                        <span class="user-info-text">Usuario<br>
+                            <span class="user-state-info">CorreoUsuario</span>
+                        </span>
                     </a>
                 </div>
             </div>
@@ -263,14 +264,20 @@
                         <div class="navbar-nav" id="navbarNav">
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link hide-sidebar-toggle-button" href="#"><i
-                                            class="material-icons">first_page</i></a>
+                                    <a class="nav-link hide-sidebar-toggle-button" href="#">
+                                        <i class="material-icons">first_page</i>
+                                    </a>
                                 </li>
-                                <li class="nav-item dropdown hidden-on-mobile">
+                                <li class="nav-item icon-note hidden-on-mobile">
+                                    <i class="material-icons">book</i>
+                                </li>
+                                <li nav-item>
+                                    <input class="name-note hidden-on-mobile" type="text" placeholder="Nombre de la nota">
+                                </li>
+                                <li class="nav-item dropdown hidden-on-mobile d-category">
                                     <a class="nav-link dropdown-toggle" href="#" id="addDropdownLink" role="button"
                                         data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="material-icons">book</i><span class="name-note">Nombre de la nota
-                                            <span class="categoria">Tareas</span></span>
+                                            <span class="categoria">Tareas</span>
                                     </a>
                                     <!-- Esta lista la utilizaremos para las categorias de nota -->
                                     <ul class="dropdown-menu" aria-labelledby="addDropdownLink">

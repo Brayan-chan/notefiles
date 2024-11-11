@@ -120,6 +120,20 @@ a {
     white-space: pre-wrap; /* Mantener saltos de línea */
 }
 
+.icon-note {
+    margin-top: 10px;
+}
+
+.name-note {
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.d-category {
+    margin-top: 10px;
+    margin-left: -180px;
+}
+
 #editor img.interactive-image {
     max-width: 100%;
     height: auto;
