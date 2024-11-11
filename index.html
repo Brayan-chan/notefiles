@@ -63,7 +63,7 @@
             <div class="app-menu">
                 <ul class="accordion-menu">
                     <li>
-                        <a class="new-note-btn" href="#">NUEVA NOTA <i class="material-icons">add_box</i></a>
+                        <a class="new-note-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="Nueva Nota" href="#">NUEVA NOTA <i class="material-icons">add_box</i></a>
                     </li>
                     <li class="sidebar-title">
                         Historial
@@ -78,13 +78,13 @@
                                     </div>
                                     <div class="note-details">
                                         <div class="note-title">
-                                            Motor Edege
+                                            Motor Edge
                                         </div>
                                         <div class="note-category ideas">
                                             Ideas
                                         </div>
                                     </div>
-                                    <div class="note-date">20 oct →</div>
+                                    <div class="note-date">20 oct <span>→</span></div>
                                 </div>
                             </a>
                         </li>
@@ -103,7 +103,7 @@
                                             Tareas
                                         </div>
                                     </div>
-                                    <div class="note-date">18 oct →</div>
+                                    <div class="note-date">18 oct <span>→</span></div>
                                 </div>
                             </a>
                         </li>
@@ -122,7 +122,7 @@
                                             Tareas
                                         </div>
                                     </div>
-                                    <div class="note-date">17 oct →</div>
+                                    <div class="note-date">17 oct <span>→</span></div>
                                 </div>
                             </a>
                         </li>
@@ -140,7 +140,7 @@
                                             Proyectos
                                         </div>
                                     </div>
-                                    <div class="note-date">10 oct →</div>
+                                    <div class="note-date">10 oct <span>→</span></div>
                                 </div>
                             </a>
                         </li>
@@ -159,7 +159,7 @@
                                             Proyectos
                                         </div>
                                     </div>
-                                    <div class="note-date">8 oct →</div>
+                                    <div class="note-date">8 oct <span>→</span></div>
                                 </div>
                             </a>
                         </li>
@@ -178,7 +178,7 @@
                                             Tareas
                                         </div>
                                     </div>
-                                    <div class="note-date">30 sept →</div>
+                                    <div class="note-date">30 sept <span>→</span></div>
                                 </div>
                             </a>
                         </li>
@@ -197,7 +197,7 @@
                                             Proyectos
                                         </div>
                                     </div>
-                                    <div class="note-date">28 sept →</div>
+                                    <div class="note-date">28 sept <span>→</span></div>
                                 </div>
                             </a>
                         </li>
@@ -216,19 +216,46 @@
                                             Tareas
                                         </div>
                                     </div>
-                                    <div class="note-date">27 sept →</div>
+                                    <div class="note-date">27 sept <span>→</span></div>
                                 </div>
                             </a>
                         </li>
                     </ul>
                     <hr>
                     <li class="sidebar-footer">
-                        <a id="collaborate-button" class="new-colaborate" href="#">COLABORAR <i
+                        <a id="collaborate-button" class="new-colaborate" data-bs-toggle="tooltip" data-bs-placement="top" title="Colaborar" href="#">COLABORAR <i
                                 class="material-icons">group</i></a>
                     </li>
                 </ul>
             </div>
         </div>
+
+        <!-- Template de las notas creadas en el historial -->
+
+        <template id="note-template">
+            <li>
+                <a href="#">
+                    <div class="note-item">
+                        <div class="note-icon">
+                            <!-- Aqui se debe de poner la imagen de la nota -->
+                        </div>
+                        <div class="note-details">
+                            <div class="note-title">
+                                <!-- Aqui se debe de poner el nombre de la nota -->
+                            </div>
+                            <div class="note-category ideas">
+                                <!-- Aqui se debe de poner la categoria de la nota -->
+                            </div>
+                        </div>
+                        <div class="note-date">
+                            <!-- Aqui se debe de poner la fecha de la nota -->
+                            <span>→</span>
+                        </div>
+                    </div>
+                </a>
+            </li>
+        </template>
+
         <div class="app-container">
             <div class="app-header">
                 <nav class="navbar navbar-light navbar-expand-lg">
@@ -305,53 +332,53 @@
                                     <div class="row">
                                         <div class="col">
                                             <div class="top-functions d-flex justify-content-between p-3 mx-3">
-                                                <button onclick="applyFormat('bold')">
+                                                <button onclick="applyFormat('bold')" data-bs-toggle="tooltip" data-bs-placement="top" title="Negrita">
                                                     <i class="material-icons">
                                                         format_bold
                                                     </i>
                                                 </button>
-                                                <button onclick="applyFormat('italic')">
+                                                <button onclick="applyFormat('italic')" data-bs-toggle="tooltip" data-bs-placement="top" title="Cursiva">
                                                     <i class="material-icons">
                                                         format_italic
                                                     </i>
                                                 </button>
-                                                <button onclick="applyFormat('underline')">
+                                                <button onclick="applyFormat('underline')" data-bs-toggle="tooltip" data-bs-placement="top" title="Subrayado">
                                                     <i class="material-icons">
                                                         format_underlined
                                                     </i>
                                                 </button>
-                                                <button onclick="applyFormat('strikethrough')">
+                                                <button onclick="applyFormat('strikethrough')" data-bs-toggle="tooltip" data-bs-placement="top" title="Tachado">
                                                     <i class="material-icons">
                                                         format_strikethrough
                                                     </i>
                                                 </button>
-                                                <button onclick="toggleColorPicker()" id="colorPickerButton">
+                                                <button onclick="toggleColorPicker()" id="colorPickerButton" data-bs-toggle="tooltip" data-bs-placement="top" title="Cambiar color">
                                                     <i class="material-icons">
                                                         title
                                                     </i>
                                                     <div class="color-indicator" id="colorIndicator"></div>
                                                 </button>
-                                                <button onclick="applyAlign('justifyLeft')">
+                                                <button onclick="applyAlign('justifyLeft')" data-bs-toggle="tooltip" data-bs-placement="top" title="Alinear a izquierda">
                                                     <i class="material-icons">
                                                         format_align_left
                                                     </i>
                                                 </button>
-                                                <button onclick="applyAlign('justifyCenter')">
+                                                <button onclick="applyAlign('justifyCenter')" data-bs-toggle="tooltip" data-bs-placement="top" title="Alinear al centro">
                                                     <i class="material-icons">
                                                         format_align_center
                                                     </i>
                                                 </button>
-                                                <button onclick="applyAlign('justifyRight')">
+                                                <button onclick="applyAlign('justifyRight')" data-bs-toggle="tooltip" data-bs-placement="top" title="Alinear a derecha">
                                                     <i class="material-icons">
                                                         format_align_right
                                                     </i>
                                                 </button>
-                                                <button onclick="applyAlign('justifyFull')">
+                                                <button onclick="applyAlign('justifyFull')" data-bs-toggle="tooltip" data-bs-placement="top" title="Justificar">
                                                     <i class="material-icons">
                                                         format_align_justify
                                                     </i>
                                                 </button>
-                                                <button onclick="addLink()">
+                                                <button onclick="addLink()" data-bs-toggle="tooltip" data-bs-placement="top" title="Agregar hipervínculo">
                                                     <i class="material-icons">
                                                         add_link
                                                     </i>
@@ -455,24 +482,24 @@
                         <div class="col">
                             <div class="bottom-functions d-flex justify-content-between p-3 mx-3">
                                 <label for="image-upload" id="image-upload-label">
-                                    <button onclick="addImage()">
+                                    <button onclick="addImage()" data-bs-toggle="tooltip" data-bs-placement="top" title="Agregar imagen">
                                         <i class="material-icons">
                                             image
                                         </i>
                                     </button>
                                 </label>
-                                <button id="savePDF">
+                                <button id="savePDF" data-bs-toggle="tooltip" data-bs-placement="top" title="Guardar PDF">
                                     <i class="material-icons">
                                         picture_as_pdf
                                     </i>
                                 </button>
-                                <button id="saveWord">
+                                <button id="saveWord" data-bs-toggle="tooltip" data-bs-placement="top" title="Guardar Word">
                                     <i class="material-icons">
                                         description
                                     </i>
                                 </button>
                                 <input type="file" id="fileInput" accept=".txt,.docx" class="hidden" />
-                                <button id="importButton">
+                                <button id="importButton" data-bs-toggle="tooltip" data-bs-placement="top" title="Importar">
                                     <i class="material-icons">
                                         upload_file
                                     </i>
