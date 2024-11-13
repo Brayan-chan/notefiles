@@ -117,7 +117,11 @@ a {
     width: 100%;
     overflow: hidden;
     position: relative;
-    white-space: pre-wrap; /* Mantener saltos de línea */
+    /*white-space: pre-wrap; */
+}
+
+.page-content:focus {
+    outline: none;
 }
 
 .icon-note {
