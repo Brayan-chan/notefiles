@@ -305,5 +305,3 @@ imageUpload.addEventListener('change', () => {
 peer.on('error', (err) => {
     console.error(err);
 });
-
-

@@ -20,26 +20,23 @@
     <script src="Assets/js/format.js"></script>
     <script src="Assets/js/aligns.js"></script>
     <script src="Assets/js/addLink.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="Assets/css/Fontawesome.css">
     <link rel="stylesheet" href="Assets/css/Materialicons.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="Assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="Assets/plugins/perfectscroll/perfect-scrollbar.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700;800&display=swap"
         rel="stylesheet">
-    <link href="Assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="Assets/plugins/perfectscroll/perfect-scrollbar.css" rel="stylesheet">
-    <link href="Assets/plugins/pace/pace.css" rel="stylesheet">
-    <link href="Assets/plugins/highlight/styles/github-gist.css" rel="stylesheet">
-    <link href="Assets/plugins/fullcalendar/lib/main.min.css" rel="stylesheet">
 
     <!-- Theme Styles -->
     <link href="Assets/css/colorPicker.css" rel="stylesheet">
     <link href="Assets/css/main.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="Assets/plugins/DataTables/datatables.min.css">
     <link href="Assets/css/dashboard.css" rel="stylesheet">
     <link href="Assets/css/custom.css" rel="stylesheet">
     <link href="Assets/css/formats.css" rel="stylesheet">
+    <link rel="stylesheet" href="Assets/plugins/DataTables/datatables.min.css">
     <link rel="icon" type="image/png" sizes="32x32" href="Assets/images/favicon.ico" />
     <link rel="icon" type="image/png" sizes="16x16" href="Assets/images/notefiles.png" />
 </head>
@@ -390,6 +387,16 @@
                                                         add_link
                                                     </i>
                                                 </button>
+                                                <select id="font-family" style="font-size: 16px; cursor: pointer;"
+                                                    onchange="changeFont()">
+                                                    <option value="Arial, sans-serif">Arial</option>
+                                                    <option value="Verdana, sans-serif">Verdana</option>
+                                                    <option value="Georgia, serif">Georgia</option>
+                                                    <option value="'Times New Roman', serif">Times New Roman</option>
+                                                    <option value="'Courier New', monospace">Courier New</option>
+                                                    <option value="Impact, sans-serif">Impact</option>
+                                                    <option value="'Comic Sans MS', sans-serif">Comic Sans MS</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -518,6 +525,7 @@
             </div>
         </div>
     </div>
+    <script src="Assets/js/fontFamily.js"></script>
     <script src="Assets/js/pdf.js"></script>
     <script src="Assets/js/word.js"></script>
     <script src="Assets/js/carga.js"></script>
@@ -536,12 +544,9 @@
     <script src="Assets/js/main.min.js"></script>
     <script src="Assets/js/sweetalert2@11.js"></script>
     <script src="Assets/js/pages/calendar.js"></script>
-    <script type="text/javascript" src="Assets/plugins/DataTables/datatables.min.js"></script>
+    <script src="Assets/plugins/DataTables/datatables.min.js"></script>
     <script src="Assets/js/custom.js"></script>
     <script src="Assets/js/saveUpload.js"></script>
     <script src="Assets/js/vanilla-tilt.js"></script>
-
-
 </body>
-
 </html>

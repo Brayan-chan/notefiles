@@ -147,6 +147,32 @@ a {
     outline: 2px solid #3b82f6;
 }
 
+#font-family-div {
+    border-radius: 10px;
+}
+
+select#font-family {
+    /* Resetear los estilos predeterminados del select */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    padding: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    border-radius: 10px;
+
+    & option {
+        color: #939393;
+    }
+
+    & #font-family:focus {
+        outline: none;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+}
+
 @media (min-width: 480px) {
     .page {
         width: 60%;
