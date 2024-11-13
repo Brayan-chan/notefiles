@@ -28,11 +28,6 @@ Dentro del proyecto, verás las siguientes carpetas y archivos:
 │   ├── plugins/
 │   │   ├── bootstrap/
 │   │   ├── perfectscroll/
-├── Config/
-│   ├── App/
-│   └── Coonfig.php
-├── Views/
-│   └── index.php
 ├── avances/
 │   └── avance1.png
 │   └── avance2.png
@@ -40,7 +35,7 @@ Dentro del proyecto, verás las siguientes carpetas y archivos:
 │   └── avance4.png
 │   └── idea.png
 └── README.md
-└── index.php
+└── index.html
 ```
 ## 😎 Avances
 
