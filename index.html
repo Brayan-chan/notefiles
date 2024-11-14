@@ -61,7 +61,8 @@
             <div class="app-menu">
                 <ul class="accordion-menu">
                     <li>
-                        <a class="new-note-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="Nueva Nota" href="#">NUEVA NOTA <i class="material-icons">add_box</i></a>
+                        <a class="new-note-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="Nueva Nota"
+                            href="#">NUEVA NOTA <i class="material-icons">add_box</i></a>
                     </li>
                     <li class="sidebar-title">
                         Historial
@@ -221,7 +222,8 @@
                     </ul>
                     <hr>
                     <li class="sidebar-footer">
-                        <a id="collaborate-button" class="new-colaborate" data-bs-toggle="tooltip" data-bs-placement="top" title="Colaborar" href="#">COLABORAR <i
+                        <a id="collaborate-button" class="new-colaborate" data-bs-toggle="tooltip"
+                            data-bs-placement="top" title="Colaborar" href="#">COLABORAR <i
                                 class="material-icons">group</i></a>
                     </li>
                 </ul>
@@ -269,12 +271,13 @@
                                     <i class="material-icons">book</i>
                                 </li>
                                 <li nav-item>
-                                    <input class="name-note hidden-on-mobile" type="text" placeholder="Nombre de la nota">
+                                    <input class="name-note hidden-on-mobile" type="text"
+                                        placeholder="Nombre de la nota">
                                 </li>
                                 <li class="nav-item dropdown hidden-on-mobile d-category">
                                     <a class="nav-link dropdown-toggle" href="#" id="addDropdownLink" role="button"
                                         data-bs-toggle="dropdown" aria-expanded="false">
-                                            <span class="categoria">Tareas</span>
+                                        <span class="categoria">Tareas</span>
                                     </a>
                                     <!-- Esta lista la utilizaremos para las categorias de nota -->
                                     <ul class="dropdown-menu" aria-labelledby="addDropdownLink">
@@ -336,67 +339,68 @@
                                     <div class="row">
                                         <div class="col">
                                             <div class="top-functions d-flex justify-content-between p-3 mx-3">
-                                                <button onclick="applyFormat('bold')" data-bs-toggle="tooltip" data-bs-placement="top" title="Negrita">
+                                                <button onclick="applyFormat('bold')" data-bs-toggle="tooltip"
+                                                    data-bs-placement="top" title="Negrita">
                                                     <i class="material-icons">
                                                         format_bold
                                                     </i>
                                                 </button>
-                                                <button onclick="applyFormat('italic')" data-bs-toggle="tooltip" data-bs-placement="top" title="Cursiva">
+                                                <button onclick="applyFormat('italic')" data-bs-toggle="tooltip"
+                                                    data-bs-placement="top" title="Cursiva">
                                                     <i class="material-icons">
                                                         format_italic
                                                     </i>
                                                 </button>
-                                                <button onclick="applyFormat('underline')" data-bs-toggle="tooltip" data-bs-placement="top" title="Subrayado">
+                                                <button onclick="applyFormat('underline')" data-bs-toggle="tooltip"
+                                                    data-bs-placement="top" title="Subrayado">
                                                     <i class="material-icons">
                                                         format_underlined
                                                     </i>
                                                 </button>
-                                                <button onclick="applyFormat('strikethrough')" data-bs-toggle="tooltip" data-bs-placement="top" title="Tachado">
+                                                <button onclick="applyFormat('strikethrough')" data-bs-toggle="tooltip"
+                                                    data-bs-placement="top" title="Tachado">
                                                     <i class="material-icons">
                                                         format_strikethrough
                                                     </i>
                                                 </button>
-                                                <button onclick="toggleColorPicker()" id="colorPickerButton" data-bs-toggle="tooltip" data-bs-placement="top" title="Cambiar color">
+                                                <button onclick="toggleColorPicker()" id="colorPickerButton"
+                                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                                    title="Cambiar color">
                                                     <i class="material-icons">
                                                         title
                                                     </i>
                                                     <div class="color-indicator" id="colorIndicator"></div>
                                                 </button>
-                                                <button onclick="applyAlign('justifyLeft')" data-bs-toggle="tooltip" data-bs-placement="top" title="Alinear a izquierda">
+                                                <button onclick="applyAlign('justifyLeft')" data-bs-toggle="tooltip"
+                                                    data-bs-placement="top" title="Alinear a izquierda">
                                                     <i class="material-icons">
                                                         format_align_left
                                                     </i>
                                                 </button>
-                                                <button onclick="applyAlign('justifyCenter')" data-bs-toggle="tooltip" data-bs-placement="top" title="Alinear al centro">
+                                                <button onclick="applyAlign('justifyCenter')" data-bs-toggle="tooltip"
+                                                    data-bs-placement="top" title="Alinear al centro">
                                                     <i class="material-icons">
                                                         format_align_center
                                                     </i>
                                                 </button>
-                                                <button onclick="applyAlign('justifyRight')" data-bs-toggle="tooltip" data-bs-placement="top" title="Alinear a derecha">
+                                                <button onclick="applyAlign('justifyRight')" data-bs-toggle="tooltip"
+                                                    data-bs-placement="top" title="Alinear a derecha">
                                                     <i class="material-icons">
                                                         format_align_right
                                                     </i>
                                                 </button>
-                                                <button onclick="applyAlign('justifyFull')" data-bs-toggle="tooltip" data-bs-placement="top" title="Justificar">
+                                                <button onclick="applyAlign('justifyFull')" data-bs-toggle="tooltip"
+                                                    data-bs-placement="top" title="Justificar">
                                                     <i class="material-icons">
                                                         format_align_justify
                                                     </i>
                                                 </button>
-                                                <button onclick="addLink()" data-bs-toggle="tooltip" data-bs-placement="top" title="Agregar hipervínculo">
+                                                <button onclick="addLink()" data-bs-toggle="tooltip"
+                                                    data-bs-placement="top" title="Agregar hipervínculo">
                                                     <i class="material-icons">
                                                         add_link
                                                     </i>
                                                 </button>
-                                                <select id="font-family" class="hidden-on-mobile"
-                                                    onchange="changeFont()">
-                                                    <option value="Arial, sans-serif">Arial</option>
-                                                    <option value="Verdana, sans-serif">Verdana</option>
-                                                    <option value="Georgia, serif">Georgia</option>
-                                                    <option value="'Times New Roman', serif">Times New Roman</option>
-                                                    <option value="'Courier New', monospace">Courier New</option>
-                                                    <option value="Impact, sans-serif">Impact</option>
-                                                    <option value="'Comic Sans MS', sans-serif">Comic Sans MS</option>
-                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -405,11 +409,23 @@
                         </div>
                     </div>
                 </div>
+                <div id="contextMenu" class="context-menu">
+                    <select id="font-family" class="hidden-on-mobile" onchange="changeFont()">
+                        <option value="Arial, sans-serif">Arial</option>
+                        <option value="Verdana, sans-serif">Verdana</option>
+                        <option value="Georgia, serif">Georgia</option>
+                        <option value="'Times New Roman', serif">Times New Roman</option>
+                        <option value="'Courier New', monospace">Courier New</option>
+                        <option value="Impact, sans-serif">Impact</option>
+                        <option value="'Comic Sans MS', sans-serif">Comic Sans MS</option>
+                    </select>
+                </div>
                 <div id="note-container" class="note-content">
                     <div class="page">
                         <!-- Modal de Colaborar -->
                         <div id="collaborate-modal"
-                            class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50  hidden"> <!-- Hacer un z-index para mandar el modal al frente -->
+                            class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50  hidden">
+                            <!-- Hacer un z-index para mandar el modal al frente -->
                             <div class="bg-white rounded-lg p-6 max-w-sm w-full">
                                 <h2 class="text-lg font-semibold">Compartir Peer ID</h2>
                                 <p class="mt-2 text-gray-700">Tu ID de Peer:</p>
@@ -437,15 +453,6 @@
                                     Cerrar
                                 </button>
                             </div>
-                        </div>
-                        <div class="toolbar" id="toolbar">
-                            <select onchange="changeFontSize(this.value)" aria-label="Tamaño de fuente">
-                                <option value="">Tamaño</option>
-                                <option value="1">Pequeño</option>
-                                <option value="3">Normal</option>
-                                <option value="5">Grande</option>
-                                <option value="7">Muy grande</option>
-                            </select>
                         </div>
                         <div class="page-content" contenteditable="true" id="editor">
                             <!-- Div para el editor -->
@@ -505,24 +512,28 @@
                         <div class="col">
                             <div class="bottom-functions d-flex justify-content-between p-3 mx-3">
                                 <label for="image-upload" id="image-upload-label">
-                                    <button onclick="addImage()" data-bs-toggle="tooltip" data-bs-placement="top" title="Agregar imagen">
+                                    <button onclick="addImage()" data-bs-toggle="tooltip" data-bs-placement="top"
+                                        title="Agregar imagen">
                                         <i class="material-icons">
                                             image
                                         </i>
                                     </button>
                                 </label>
-                                <button id="savePDF" data-bs-toggle="tooltip" data-bs-placement="top" title="Guardar PDF">
+                                <button id="savePDF" data-bs-toggle="tooltip" data-bs-placement="top"
+                                    title="Guardar PDF">
                                     <i class="material-icons">
                                         picture_as_pdf
                                     </i>
                                 </button>
-                                <button id="saveWord" data-bs-toggle="tooltip" data-bs-placement="top" title="Guardar Word">
+                                <button id="saveWord" data-bs-toggle="tooltip" data-bs-placement="top"
+                                    title="Guardar Word">
                                     <i class="material-icons">
                                         description
                                     </i>
                                 </button>
                                 <input type="file" id="fileInput" accept=".txt,.docx" class="hidden" />
-                                <button id="importButton" data-bs-toggle="tooltip" data-bs-placement="top" title="Importar">
+                                <button id="importButton" data-bs-toggle="tooltip" data-bs-placement="top"
+                                    title="Importar">
                                     <i class="material-icons">
                                         upload_file
                                     </i>
@@ -558,4 +569,5 @@
     <script src="Assets/js/vanilla-tilt.js"></script>
     <script src="Assets/js/fontFamily.js"></script>
 </body>
+
 </html>
