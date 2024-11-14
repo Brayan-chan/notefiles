@@ -387,7 +387,7 @@
                                                         add_link
                                                     </i>
                                                 </button>
-                                                <select id="font-family" style="font-size: 16px; cursor: pointer;"
+                                                <select id="font-family" class="hidden-on-mobile"
                                                     onchange="changeFont()">
                                                     <option value="Arial, sans-serif">Arial</option>
                                                     <option value="Verdana, sans-serif">Verdana</option>
@@ -437,6 +437,15 @@
                                     Cerrar
                                 </button>
                             </div>
+                        </div>
+                        <div class="toolbar" id="toolbar">
+                            <select onchange="changeFontSize(this.value)" aria-label="Tamaño de fuente">
+                                <option value="">Tamaño</option>
+                                <option value="1">Pequeño</option>
+                                <option value="3">Normal</option>
+                                <option value="5">Grande</option>
+                                <option value="7">Muy grande</option>
+                            </select>
                         </div>
                         <div class="page-content" contenteditable="true" id="editor">
                             <!-- Div para el editor -->
@@ -525,6 +534,7 @@
             </div>
         </div>
     </div>
+    <script src="Assets/js/tools.js"></script>
     <script src="Assets/js/fontFamily.js"></script>
     <script src="Assets/js/pdf.js"></script>
     <script src="Assets/js/word.js"></script>
