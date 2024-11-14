@@ -155,7 +155,7 @@ a {
     border-radius: 10px;
 }
 
-select#font-family {
+select#font-family, select#font-size {
     /* Resetear los estilos predeterminados del select */
     -webkit-appearance: none;
     -moz-appearance: none;

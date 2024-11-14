@@ -6,6 +6,7 @@ const editor = document.getElementById('editor');
 const fileInput = document.getElementById("fileInput");
 const importButton = document.getElementById("importButton");
 const imageUpload = document.getElementById('image-upload');
+const fontSizeSelector = document.getElementById('font-size');
 let isTyping = false;
 
 // Modal y botón de colaborar
@@ -305,3 +306,13 @@ imageUpload.addEventListener('change', () => {
 peer.on('error', (err) => {
     console.error(err);
 });
+
+// Cambia el tamaño de la fuente en el texto seleccionado
+function changeFontSize() {
+    document.execCommand('fontSize', false, '7'); // Establece un tamaño temporal
+    let fontElements = editor.querySelectorAll("font[size='7']");
+    fontElements.forEach(element => {
+      element.removeAttribute("size");
+      element.style.fontSize = fontSizeSelector.value;
+    });
+}

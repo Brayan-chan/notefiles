@@ -410,7 +410,7 @@
                     </div>
                 </div>
                 <div id="contextMenu" class="context-menu">
-                    <select id="font-family" class="hidden-on-mobile" onchange="changeFont()">
+                    <select id="font-family" onchange="changeFont()">
                         <option value="Arial, sans-serif">Arial</option>
                         <option value="Verdana, sans-serif">Verdana</option>
                         <option value="Georgia, serif">Georgia</option>
@@ -418,6 +418,16 @@
                         <option value="'Courier New', monospace">Courier New</option>
                         <option value="Impact, sans-serif">Impact</option>
                         <option value="'Comic Sans MS', sans-serif">Comic Sans MS</option>
+                    </select>
+                    <select id="font-size" onchange="changeFontSize()">
+                        <option value="10px">10px</option>
+                        <option value="12px">12px</option>
+                        <option value="14px">14px</option>
+                        <option value="16px">16px</option>
+                        <option value="18px">18px</option>
+                        <option value="20px">20px</option>
+                        <option value="22px">22px</option>
+                        <option value="24px">24px</option>
                     </select>
                 </div>
                 <div id="note-container" class="note-content">
