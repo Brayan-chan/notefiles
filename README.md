@@ -1,6 +1,6 @@
 # Notefiles - Gestor de Notas Intuitivo y Personalizable 
 
-## ¡Bienvenido a Notefiles
+## ¡Bienvenido a Notefiles!
 
   <img src='avances/preview.png'>
 
