@@ -54,6 +54,9 @@ document.getElementById('saveWord').addEventListener('click', () => {
     link.href = URL.createObjectURL(blob);
     link.download = 'documento.doc';
     link.click();
+    if (blob !== null) {
+        alertaPerzonalizada("success", "Documento guardado como Word");
+    }
 });
 
 // Funcionalidad para guardar como PDF
@@ -86,8 +89,10 @@ document.getElementById('savePDF').addEventListener('click', async () => {
         doc.addImage(imgData, 'PNG', 0, position, imgWidth, Math.min(pageHeight, heightLeft));
         heightLeft -= pageHeight;
     }
-
     doc.save('documento.pdf');
+    if (doc !== null) {
+        alertaPerzonalizada("success", "Documento guardado como PDF");
+    }
 });
 
 // Funcionalidad para importar archivos
@@ -128,9 +133,9 @@ closeModal.addEventListener('click', () => {
 // Copiar el Peer ID al portapapeles
 copyButton.addEventListener('click', () => {
     navigator.clipboard.writeText(modalPeerId.value).then(() => {
-        alert('Peer ID copiado al portapapeles');
+        alertaPerzonalizada("success", "ID de Peer copiado al portapapeles");
     }).catch((err) => {
-        console.error('Error al copiar al portapapeles:', err);
+        alertaPerzonalizada("error", "Error al copiar el ID de Peer al portapapeles");
     });
 });
 
@@ -140,6 +145,8 @@ document.getElementById('connect-button').addEventListener('click', () => {
     if (connectToId) {
         const conn = peer.connect(connectToId);
         setupNewConnection(conn);
+        collaborateModal.classList.add('hidden');
+        alertaPerzonalizada("success", "Conectado al usuario con ID: " + connectToId);
     }
 });
 
