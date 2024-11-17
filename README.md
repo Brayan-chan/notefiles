@@ -1,3 +1,10 @@
+# Notefiles - Gestor de Notas Intuitivo y Personalizable 
+
+## ¡Bienvenido a Notefiles
+
+  <img src='avances/preview.png'>
+
+
 # Inicio basico del proyecto notefiles
 
 ## 🚀 Estructura del proyecto
