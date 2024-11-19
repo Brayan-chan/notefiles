@@ -16,6 +16,20 @@ Dentro del proyecto, verás las siguientes carpetas y archivos:
 ├── Assets/
 │   ├── css/
 │   │   ├── horizontal-menu/
+│   │   ├── cajaComentarios/
+│   │   ├── colorPicker/
+│   │   ├── comentarios/
+│   │   ├── custom/
+│   │   ├── darktheme/
+│   │   ├── dashboard/
+│   │   ├── Fontawesome/
+│   │   ├── formats/
+│   │   ├── main/
+│   │   ├── main.min/
+│   │   ├── Materialicons/
+│   │   ├── rating/
+│   │   ├── select2-bootstrap-5-theme.rtl.min/
+│   │   ├── select2.min/
 │   ├── images/
 │   │   ├── avatars/
 │   │   ├── backgrounds/
