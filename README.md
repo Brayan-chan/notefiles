@@ -14,21 +14,21 @@ Dentro del proyecto, verás las siguientes carpetas y archivos:
 ├── Assets/
 │   ├── css/
 │   │   ├── horizontal-menu/
-│   │   │   └── horizontal-menu.css/
-│   │   └── cajaComentarios.css/
-│   │   └── colorPicker.css/
-│   │   └── comentarios.css/
-│   │   └── custom.css/
-│   │   └── darktheme.css/
-│   │   └── dashboard.css/
-│   │   └── Fontawesome.css/
-│   │   └── formats.css/
-│   │   └── main.css/
-│   │   └── main.min.css/
-│   │   └── Materialicons.css/
-│   │   └── rating.css/
-│   │   └── select2-bootstrap-5-theme.rtl.min.css/
-│   │   └── select2.min.css/
+│   │   │   └── horizontal-menu.css
+│   │   └── cajaComentarios.css
+│   │   └── colorPicker.css
+│   │   └── comentarios.css
+│   │   └── custom.css
+│   │   └── darktheme.css
+│   │   └── dashboard.css
+│   │   └── Fontawesome.css
+│   │   └── formats.css
+│   │   └── main.css
+│   │   └── main.min.css
+│   │   └── Materialicons.css
+│   │   └── rating.css
+│   │   └── select2-bootstrap-5-theme.rtl.min.css
+│   │   └── select2.min.css
 │   ├── images/
 │   │   ├── avatars/
 │   │   │   └── avatar.png
@@ -61,26 +61,26 @@ Dentro del proyecto, verás las siguientes carpetas y archivos:
 │   │   │   └── twitter.svg
 │   │   │   └── user-icon.png
 │   │   ├── other/
-│   │   │   └── bank_of_america.png/
-│   │   │   └── bank_of_canada.png/
-│   │   │   └── facebook_logo.png/
-│   │   │   └── facebook_logo.svg/
-│   │   │   └── mastercard.png/
-│   │   │   └── visa.svg/
+│   │   │   └── bank_of_america.png
+│   │   │   └── bank_of_canada.png
+│   │   │   └── facebook_logo.png
+│   │   │   └── facebook_logo.svg
+│   │   │   └── mastercard.png
+│   │   │   └── visa.svg
 │   │   ├── widgets/
-│   │   │   └── security.psvg/
-│   │   │   └── speed.png/
-│   │   │   └── widget.png/
-│   │   └── align-center.svg/
-│   │   └── align-justify.svg/
-│   │   └── align-left.svg/
-│   │   └── align-right.svg/  
-│   │   └── docs.png/
-│   │   └── favicon.ico/
-│   │   └── log.png/
-│   │   └── neptune.png/
-│   │   └── notefiles.png/
-│   │   └── uac_logo.png/         
+│   │   │   └── security.svg
+│   │   │   └── speed.png
+│   │   │   └── widget.png
+│   │   └── align-center.svg
+│   │   └── align-justify.svg
+│   │   └── align-left.svg
+│   │   └── align-right.svg  
+│   │   └── docs.png
+│   │   └── favicon.ico
+│   │   └── log.png
+│   │   └── neptune.png
+│   │   └── notefiles.png
+│   │   └── uac_logo.png         
 │   ├── js/
 │   │   └── addImage.js
 │   │   └── addLink.js
