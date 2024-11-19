@@ -15,36 +15,17 @@ Dentro del proyecto, verás las siguientes carpetas y archivos:
 │   ├── css/
 │   │   ├── horizontal-menu/
 │   │   │   └── horizontal-menu.css
-│   │   └── cajaComentarios.css
 │   │   └── colorPicker.css
-│   │   └── comentarios.css
 │   │   └── custom.css
-│   │   └── darktheme.css
 │   │   └── dashboard.css
 │   │   └── Fontawesome.css
 │   │   └── formats.css
 │   │   └── main.css
 │   │   └── main.min.css
 │   │   └── Materialicons.css
-│   │   └── rating.css
-│   │   └── select2-bootstrap-5-theme.rtl.min.css
+│   │ └──select2-bootstrap-5-theme.rtl.min.css
 │   │   └── select2.min.css
 │   ├── images/
-│   │   ├── avatars/
-│   │   │   └── avatar.png
-│   │   ├── backgrounds/
-│   │   │   └── error.svg
-│   │   │   └── lock-screen.svg
-│   │   │   └── sign-in.jpeg
-│   │   │   └── sign-in.svg
-│   │   │   └── sign-up.svg
-│   │   ├── cards/
-│   │   │   └── card.png
-│   │   ├── flags/
-│   │   │   └── china.png
-│   │   │   └── germany.png
-│   │   │   └── italy.png
-│   │   │   └── us.png
 │   │   ├── icons/
 │   │   │   └── bitbucket.png
 │   │   │   └── chat.png
