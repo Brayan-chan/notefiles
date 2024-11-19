@@ -1,4 +1,4 @@
-# Notefiles - Gestor de Notas Intuitivo y Personalizable ✨
+![image](https://github.com/user-attachments/assets/ea4bf344-06ad-456f-b389-d8ac5e84e9e6)# Notefiles - Gestor de Notas Intuitivo y Personalizable ✨
 
 ## ¡Bienvenido a Notefiles! 🚀
 
@@ -16,28 +16,73 @@ Dentro del proyecto, verás las siguientes carpetas y archivos:
 ├── Assets/
 │   ├── css/
 │   │   ├── horizontal-menu/
-│   │   ├── cajaComentarios/
-│   │   ├── colorPicker/
-│   │   ├── comentarios/
-│   │   ├── custom/
-│   │   ├── darktheme/
-│   │   ├── dashboard/
-│   │   ├── Fontawesome/
-│   │   ├── formats/
-│   │   ├── main/
-│   │   ├── main.min/
-│   │   ├── Materialicons/
-│   │   ├── rating/
-│   │   ├── select2-bootstrap-5-theme.rtl.min/
-│   │   ├── select2.min/
+│   │   │   └── horizontal-menu.css/
+│   │   └── cajaComentarios.css/
+│   │   └── colorPicker.css/
+│   │   └── comentarios.css/
+│   │   └── custom.css/
+│   │   └── darktheme.css/
+│   │   └── dashboard.css/
+│   │   └── Fontawesome.css/
+│   │   └── formats.css/
+│   │   └── main.css/
+│   │   └── main.min.css/
+│   │   └── Materialicons.css/
+│   │   └── rating.css/
+│   │   └── select2-bootstrap-5-theme.rtl.min.css/
+│   │   └── select2.min.css/
 │   ├── images/
 │   │   ├── avatars/
+│   │   │   └── avatar.png
 │   │   ├── backgrounds/
+│   │   │   └── error.svg
+│   │   │   └── lock-screen.svg
+│   │   │   └── sign-in.jpeg
+│   │   │   └── sign-in.svg
+│   │   │   └── sign-up.svg
 │   │   ├── cards/
+│   │   │   └── card.png
 │   │   ├── flags/
+│   │   │   └── china.png
+│   │   │   └── germany.png
+│   │   │   └── italy.png
+│   │   │   └── us.png
 │   │   ├── icons/
+│   │   │   └── bitbucket.png
+│   │   │   └── chat.png
+│   │   │   └── conference.png
+│   │   │   └── confluence.png
+│   │   │   └── dropbox.jpeg
+│   │   │   └── facebook.png
+│   │   │   └── google_drive.png
+│   │   │   └── google.png
+│   │   │   └── jira_software.png
+│   │   │   └── onedrive.png
+│   │   │   └── sourcetree.png
+│   │   │   └── twitter.png
+│   │   │   └── twitter.svg
+│   │   │   └── user-icon.png
 │   │   ├── other/
+│   │   │   └── bank_of_america.png/
+│   │   │   └── bank_of_canada.png/
+│   │   │   └── facebook_logo.png/
+│   │   │   └── facebook_logo.svg/
+│   │   │   └── mastercard.png/
+│   │   │   └── visa.svg/
 │   │   ├── widgets/
+│   │   │   └── security.psvg/
+│   │   │   └── speed.png/
+│   │   │   └── widget.png/
+│   │   └── align-center.svg/
+│   │   └── align-justify.svg/
+│   │   └── align-left.svg/
+│   │   └── align-right.svg/  
+│   │   └── docs.png/
+│   │   └── favicon.ico/
+│   │   └── log.png/
+│   │   └── neptune.png/
+│   │   └── notefiles.png/
+│   │   └── uac_logo.png/         
 │   ├── js/
 │   │   └── addImage.js
 │   │   └── addLink.js
