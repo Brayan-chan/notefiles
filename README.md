@@ -120,9 +120,6 @@ Dentro del proyecto, verás las siguientes carpetas y archivos:
 │   │   └── vainilla-tilt.js
 │   │   └── word.js
 │   ├── plugins/
-│   │   ├── apexcharts/
-│   │   ├── bootstrap/
-│   │   ├── perfectscroll/
 ├── avances/
 │   └── avance1.png
 │   └── avance2.png
