@@ -82,14 +82,45 @@ Dentro del proyecto, verás las siguientes carpetas y archivos:
 │   │   └── notefiles.png
 │   │   └── uac_logo.png         
 │   ├── js/
-│   │   └── addImage.js
+│   │   ├── pages/
+│   │   │   └── animaciones.js
+│   │   │   └── blockui.js
+│   │   │   └── calendar.js
+│   │   │   └── charts-apex.js
+│   │   │   └── charts-chartsjs.js
+│   │   │   └── comentarios.js
+│   │   │   └── datepickers.js
+│   │   │   └── input-mask.js
+│   │   │   └── lightbox.js
+│   │   │   └── login.js
+│   │   │   └── mailbox.js
+│   │   │   └── registros.js
+│   │   │   └── select2.js
+│   │   │   └── session-timeout.js
+│   │   │   └── settings.js
+│   │   │   └── text-editor.js
+│   │   │   └── usuarios.js
+│   │   │   └── widgets.js
 │   │   └── addLink.js
 │   │   └── aligns.js
-│   │   └── drag-custom.js
+│   │   └── carga.js
+│   │   └── colorPicker.js
+│   │   └── custom.js
+│   │   └── fontFamily.js
 │   │   └── format.js
+│   │   └── iconManagement.js
+│   │   └── interact.js
+│   │   └── main.js
+│   │   └── main.min.js
 │   │   └── pagination.js
-│   │   └── pages/
+│   │   └── pdf.js
+│   │   └── saveUpload.js
+│   │   └── select2.min.js
+│   │   └── sweetalert2@11.js
+│   │   └── vainilla-tilt.js
+│   │   └── word.js
 │   ├── plugins/
+│   │   ├── apexcharts/
 │   │   ├── bootstrap/
 │   │   ├── perfectscroll/
 ├── avances/
@@ -106,8 +137,13 @@ Dentro del proyecto, verás las siguientes carpetas y archivos:
 │   └── avance11.png
 │   └── idea.png
 │   └── preview.png
-└── README.md
+└── .gitignore
+└── CODE_OF_CONDUCT.md
+└── CONTRIBUTING.md
 └── index.html
+└── LICENSE
+└── README.md
+└── SECURITY.md
 ```
 ## 😎 Avances
 
