@@ -105,6 +105,7 @@ Dentro del proyecto, verás las siguientes carpetas y archivos:
 │   └── avance10.png
 │   └── avance11.png
 │   └── idea.png
+│   └── preview.png
 └── README.md
 └── index.html
 ```
