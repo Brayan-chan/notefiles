@@ -43,6 +43,10 @@ Dentro del proyecto, verás las siguientes carpetas y archivos:
 │   └── avance5.png
 │   └── avance6.png
 │   └── avance7.png
+│   └── avance8.png
+│   └── avance9.png
+│   └── avance10.png
+│   └── avance11.png
 │   └── idea.png
 └── README.md
 └── index.html
