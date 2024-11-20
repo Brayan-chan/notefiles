@@ -117,7 +117,6 @@ fileInput.addEventListener('change', async (e) => {
 // Mostrar el ID de peer del usuario y actualizar el input en el modal
 peer.on('open', (id) => {
     modalPeerId.value = id; // Mostrar el Peer ID en el modal
-    console.log('Mi ID de Peer es:', id);
 });
 
 // Mostrar el modal al hacer clic en el botón "Colaborar"
@@ -150,7 +149,7 @@ document.getElementById('connect-button').addEventListener('click', () => {
     }
 });
 
-// Configuración de la conexión y otras funcionalidades
+// Configuración de la conexión
 peer.on('connection', (conn) => {
     setupNewConnection(conn);
 });
@@ -295,17 +294,37 @@ function resizeMoveListener(event) {
     target.setAttribute('data-y', y);
 }
 
-// Funcionalidad de carga de imagen
+// Función para activar el input de selección de archivo
+function triggerImageUpload() {
+    imageUpload.click(); // Simula un clic en el input de archivo
+}
+
+// Función para insertar imagen en el editor
+function insertImageInEditor(base64Image) {
+    if (editor) {
+        const imgElement = document.createElement('img'); // Crear elemento de imagen
+        imgElement.src = base64Image; // Asignar el contenido Base64
+        imgElement.style.maxWidth = '100%'; // Ajustar tamaño inicial
+        imgElement.style.margin = '10px 0';
+        imgElement.style.position = 'absolute'; // Para permitir arrastrar
+        imgElement.style.cursor = 'move'; // Indicador visual de interacción
+
+        editor.appendChild(imgElement); // Insertar imagen en el editor
+
+        makeImageInteractive(imgElement); // Hacer la imagen interactiva
+    }
+}
+
+// Manejar el cambio de archivo
 imageUpload.addEventListener('change', () => {
     const file = imageUpload.files[0];
     if (file) {
         const reader = new FileReader();
         reader.onload = () => {
-            const base64Image = reader.result;
-            insertImageInEditor(base64Image);
-            broadcastImage(base64Image);
+            const base64Image = reader.result; // Leer archivo como Base64
+            insertImageInEditor(base64Image); // Insertar imagen en el editor
         };
-        reader.readAsDataURL(file);
+        reader.readAsDataURL(file); // Leer el archivo
     }
 });
 

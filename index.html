@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Responsive Admin Dashboard Template">
-    <meta name="keywords" content="admin,dashboard">
+    <meta name="description" content="Responsive Note Editor">
+    <meta name="keywords" content="editor, notes">
     <meta name="author" content="stacks">
 
     <!-- Title -->
@@ -36,7 +36,6 @@
     <link href="Assets/css/dashboard.css" rel="stylesheet">
     <link href="Assets/css/custom.css" rel="stylesheet">
     <link href="Assets/css/formats.css" rel="stylesheet">
-    <link rel="stylesheet" href="Assets/plugins/DataTables/datatables.min.css">
     <link rel="icon" type="image/png" sizes="32x32" href="Assets/images/favicon.ico" />
     <link rel="icon" type="image/png" sizes="16x16" href="Assets/images/notefiles.png" />
 </head>
@@ -62,7 +61,8 @@
                 <ul class="accordion-menu">
                     <li>
                         <a class="new-note-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="Nueva Nota"
-                            href="#">NUEVA NOTA <i class="material-icons">add_box</i></a>
+                            href="#">NUEVA NOTA <i class="material-icons">add_box</i>
+                        </a>
                     </li>
                     <li class="sidebar-title">
                         Historial
@@ -205,7 +205,6 @@
                                 <div class="note-item">
                                     <div class="note-icon">
                                         <img src="Assets/images/docs.png" alt="Nota Icono">
-
                                     </div>
                                     <div class="note-details">
                                         <div class="note-title">
@@ -223,15 +222,15 @@
                     <hr>
                     <li class="sidebar-footer">
                         <a id="collaborate-button" class="new-colaborate" data-bs-toggle="tooltip"
-                            data-bs-placement="top" title="Colaborar" href="#">COLABORAR <i
-                                class="material-icons">group</i></a>
+                            data-bs-placement="top" title="Colaborar" href="#">COLABORAR
+                            <i class="material-icons">group</i>
+                        </a>
                     </li>
                 </ul>
             </div>
         </div>
 
         <!-- Template de las notas creadas en el historial -->
-
         <template id="note-template">
             <li>
                 <a href="#">
@@ -521,14 +520,15 @@
                     <div class="row">
                         <div class="col">
                             <div class="bottom-functions d-flex justify-content-between p-3 mx-3">
-                                <label for="image-upload" id="image-upload-label">
-                                    <button onclick="addImage()" data-bs-toggle="tooltip" data-bs-placement="top"
-                                        title="Agregar imagen">
-                                        <i class="material-icons">
-                                            image
-                                        </i>
+                                <!-- Botón para abrir el selector de archivo -->
+                                <label id="image-upload-label">
+                                    <button onclick="triggerImageUpload()" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Agregar imagen">
+                                        <i class="material-icons">image</i>
                                     </button>
                                 </label>
+                                <!-- Input oculto para seleccionar el archivo -->
+                                <input type="file" accept="image/*" id="image-upload" style="display: none;" />
                                 <button id="savePDF" data-bs-toggle="tooltip" data-bs-placement="top"
                                     title="Guardar PDF">
                                     <i class="material-icons">
@@ -566,17 +566,10 @@
     <script src="Assets/plugins/bootstrap/js/popper.min.js"></script>
     <script src="Assets/plugins/bootstrap/js/bootstrap.min.js'; ?>"></script>
     <script src="Assets/plugins/perfectscroll/perfect-scrollbar.min.js"></script>
-    <script src="Assets/plugins/pace/pace.min.js"></script>
-    <script src="Assets/plugins/highlight/highlight.pack.js"></script>
-    <script src="Assets/plugins/fullcalendar/lib/main.min.js"></script>
-    <script src="Assets/plugins/apexcharts/apexcharts.min.js"></script>
     <script src="Assets/js/main.min.js"></script>
     <script src="Assets/js/sweetalert2@11.js"></script>
-    <script src="Assets/js/pages/calendar.js"></script>
-    <script src="Assets/plugins/DataTables/datatables.min.js"></script>
     <script src="Assets/js/custom.js"></script>
     <script src="Assets/js/saveUpload.js"></script>
-    <script src="Assets/js/vanilla-tilt.js"></script>
     <script src="Assets/js/fontFamily.js"></script>
 </body>
 

@@ -38,11 +38,3 @@ function addLink() {
         }
     });
 }
-
-// Hacer clic en los enlaces funcionales
-document.getElementById('editor').addEventListener('click', (e) => {
-    if (e.target.tagName === 'A') {
-        e.preventDefault(); // Evitar el comportamiento por defecto en modo editable
-        window.open(e.target.href, '_blank'); // Abrir el enlace en una nueva pestaña
-    }
-});

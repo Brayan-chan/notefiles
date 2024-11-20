@@ -36,9 +36,9 @@ function handlePagination(event) {
         if (event.inputType === 'insertParagraph' || event.inputType === 'insertLineBreak') {
             event.preventDefault();
             
-            // Si la página está llena, crear una nueva y mover el foco allí
+            // Si la página está llena, crear una nueva y mover el enfoque allí
             const newPageContent = createNewPage();
-            newPageContent.focus();  // Pasar el foco a la nueva página
+            newPageContent.focus();  // Pasar el enfoque a la nueva página
         }
     }
 }
