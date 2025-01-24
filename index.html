@@ -606,22 +606,42 @@
             }
         });
 
+        // Actualizar categoría de la nota
+        const categoryDropdownItems = document.querySelectorAll('.dropdown-item');
+        const categorySpan = document.querySelector('.categoria');
+        categoryDropdownItems.forEach(item => {
+            item.addEventListener('click', async (e) => {
+                e.preventDefault();
+                const selectedCategory = e.target.textContent;
+                categorySpan.textContent = selectedCategory;
+                if (currentNoteId) {
+                    await updateDoc(doc(db, 'notes', currentNoteId), {
+                        category: selectedCategory,
+                        updatedAt: new Date()
+                    });
+                    updateNoteCategoryInHistory(currentNoteId, selectedCategory);
+                }
+            });
+        });
+
         // Crear nueva nota
         document.querySelector('.new-note-btn').addEventListener('click', async () => {
             const docRef = await addDoc(collection(db, 'notes'), {
                 title: 'Nueva Nota',
                 content: '',
+                category: 'Tareas',
                 createdAt: new Date(),
                 updatedAt: new Date()
             });
             currentNoteId = docRef.id;
             editor.innerHTML = '';
             nameInput.value = 'Nueva Nota';
-            addNoteToHistory(docRef.id, 'Nueva Nota', new Date());
+            categorySpan.textContent = 'Tareas';
+            addNoteToHistory(docRef.id, 'Nueva Nota', 'Tareas', new Date());
         });
 
         // Agregar nota al historial
-        function addNoteToHistory(id, title, date) {
+        function addNoteToHistory(id, title, category, date) {
             const noteList = document.querySelector('.note-list');
             const noteItem = document.createElement('li');
             noteItem.innerHTML = `
@@ -632,7 +652,7 @@
                         </div>
                         <div class="note-details">
                             <div class="note-title">${title}</div>
-                            <div class="note-category ideas">Ideas</div>
+                            <div class="note-category">${category}</div>
                         </div>
                         <div class="note-date">${date.toLocaleDateString()} <span>→</span></div>
                     </div>
@@ -648,8 +668,17 @@
                     currentNoteId = noteId;
                     editor.innerHTML = noteDoc.data().content;
                     nameInput.value = noteDoc.data().title;
+                    categorySpan.textContent = noteDoc.data().category;
                 }
             });
+        }
+
+        // Actualizar categoría de la nota en el historial
+        function updateNoteCategoryInHistory(id, newCategory) {
+            const noteItem = document.querySelector(`a[data-id="${id}"] .note-category`);
+            if (noteItem) {
+                noteItem.textContent = newCategory;
+            }
         }
 
         // Actualizar título de la nota en el historial
@@ -664,7 +693,7 @@
         async function loadNotes() {
             const querySnapshot = await getDocs(collection(db, 'notes'));
             querySnapshot.forEach((doc) => {
-                addNoteToHistory(doc.id, doc.data().title, doc.data().createdAt.toDate());
+                addNoteToHistory(doc.id, doc.data().title, doc.data().category, doc.data().createdAt.toDate());
             });
         }
 
@@ -721,6 +750,7 @@
     <script src="Assets/js/custom.js"></script>
     <script src="Assets/js/saveUpload.js"></script>
     <script src="Assets/js/fontFamily.js"></script>
+    <script src="Assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
