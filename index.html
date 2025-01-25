@@ -37,8 +37,9 @@
     <link href="Assets/css/dashboard.css" rel="stylesheet">
     <link href="Assets/css/custom.css" rel="stylesheet">
     <link href="Assets/css/formats.css" rel="stylesheet">
+    <link rel="stylesheet" href="Assets/css/alertSave.css">
     <link rel="icon" type="image/png" sizes="32x32" href="Assets/images/favicon.ico" />
-    <link rel="icon" type="image/png" sizes="16x16" href="Assets/images/notefiles.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="Assets/images/notefiles.png" /
 </head>
 
 <body>
@@ -290,6 +291,10 @@
                         </div>
                         <div class="d-flex">
                             <ul class="navbar-nav">
+                                <div class="loader" id="saving-loader" style="display: none;">
+                                    <span class="loader-text">Guardando</span>
+                                    <span class="load"></span>
+                                </div>
                                 <li class="nav-item hidden-on-mobile">
                                     <a class="nav-link nav-notifications-toggle" id="notificationsDropDown" href="#"
                                         data-bs-toggle="dropdown"><i class="material-icons"
