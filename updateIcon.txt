@@ -1,0 +1,148 @@
+// Función para subir imagen a Cloudinary y guardar en Firebase
+        async function uploadIconToCloudinaryAndFirebase(file) {
+            const formData = new FormData();
+            formData.append('file', file);
+            formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
+
+            try {
+                // Subir a Cloudinary
+                const response = await fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    throw new Error('Error al subir la imagen a Cloudinary');
+                }
+
+                const data = await response.json();
+                const iconUrl = data.secure_url;
+
+                // Guardar en Firebase
+                if (currentNoteId) {
+                    await updateDoc(doc(db, 'notes', currentNoteId), {
+                        icon: iconUrl,
+                        updatedAt: new Date()
+                    });
+                    updateNoteIconInHistory(currentNoteId, iconUrl);
+                    console.log('Icono guardado en Firebase:', iconUrl);
+                } else {
+                    console.error('No hay una nota seleccionada para guardar el icono');
+                }
+            } catch (error) {
+                console.error('Error al subir el icono:', error);
+                alert('Error al subir el icono. Por favor, intenta de nuevo.');
+            }
+        }
+
+        // Función para actualizar el icono en el historial
+        function updateNoteIconInHistory(id, newIconUrl) {
+            const noteItem = document.querySelector(`a[data-id="${id}"] .note-icon img`);
+            if (noteItem) {
+                noteItem.src = newIconUrl;
+            }
+        }
+
+        // Event listener para la subida de iconos
+        document.getElementById('icon-upload').addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (file && currentNoteId) {
+                uploadIconToCloudinaryAndFirebase(file);
+            } else if (!currentNoteId) {
+                alert('Por favor, selecciona o crea una nota antes de subir un icono.');
+            }
+        });
+
+        // Función para cargar notas del historial
+        async function loadNotes() {
+            const querySnapshot = await getDocs(collection(db, 'notes'));
+            const sortedDocs = querySnapshot.docs.sort((a, b) => b.data().createdAt.toDate() - a.data().createdAt.toDate());
+            sortedDocs.forEach((doc) => {
+                const data = doc.data();
+                addNoteToHistory(doc.id, data.title, data.category, data.createdAt.toDate(), data.icon);
+            });
+        }
+
+        // Función para agregar nota al historial
+        function addNoteToHistory(id, title, category, date, icon) {
+            const noteList = document.querySelector('.note-list');
+            const noteItem = document.createElement('li');
+            noteItem.innerHTML = `
+                <a href="#" data-id="${id}" class="note-item ${id === currentNoteId ? 'active' : ''}">
+                    <div class="note-icon">
+                        <img src="${icon || 'https://cdn-icons-png.flaticon.com/512/5968/5968890.png'}" alt="Nota Icono">
+                    </div>
+                    <div class="note-details">
+                        <div class="note-title">${title}</div>
+                        <div class="note-category ${category.toLowerCase()}">${category}</div>
+                    </div>
+                    <div class="note-date">${date.toLocaleDateString()} <span>→</span></div>
+                </a>
+            `;
+            noteList.insertBefore(noteItem, noteList.firstChild);
+
+            noteItem.querySelector('a').addEventListener('click', async (e) => {
+                e.preventDefault();
+                selectNote(id);
+            });
+        }
+
+        // Actualizar categoría de la nota en el historial
+        function updateNoteCategoryInHistory(id, newCategory) {
+            const noteItem = document.querySelector(`a[data-id="${id}"] .note-category`);
+            if (noteItem) {
+                noteItem.textContent = newCategory;
+            }
+        }
+
+        // Actualizar título de la nota en el historial
+        function updateNoteTitleInHistory(id, newTitle) {
+            const noteItem = document.querySelector(`a[data-id="${id}"] .note-title`);
+            if (noteItem) {
+                noteItem.textContent = newTitle;
+            }
+        }
+
+        async function selectNote(noteId) {
+            document.querySelectorAll('.note-list a').forEach(a => a.classList.remove('active'));
+            const activeNoteItem = document.querySelector(`a[data-id="${noteId}"]`);
+            if (activeNoteItem) {
+                activeNoteItem.classList.add('active');
+                const noteDoc = await getDoc(doc(db, 'notes', noteId));
+                if (noteDoc.exists()) {
+                    currentNoteId = noteId;
+                    editor.innerHTML = noteDoc.data().content;
+                    nameInput.value = noteDoc.data().title;
+                    categorySpan.textContent = noteDoc.data().category;
+                    categorySpan.className = `categoria ${noteDoc.data().category.toLowerCase()}`;
+                    loadImages(noteDoc.data().images || []);
+                }
+            }
+        }
+
+        function updateActiveNote(noteId) {
+            document.querySelectorAll('.note-list a').forEach(a => a.classList.remove('active'));
+            const activeNoteItem = document.querySelector(`a[data-id="${noteId}"]`);
+            if (activeNoteItem) activeNoteItem.classList.add('active');
+        }
+
+
+        // Cargar notas al iniciar
+        loadNotes();
+
+        // Crear nueva nota
+        document.querySelector('.new-note-btn').addEventListener('click', async () => {
+            const docRef = await addDoc(collection(db, 'notes'), {
+                title: 'Nueva Nota',
+                content: '',
+                category: 'Tareas',
+                createdAt: new Date(),
+                updatedAt: new Date()
+            });
+            addNoteToHistory(docRef.id, 'Nueva Nota', 'Tareas', new Date());
+            selectNote(docRef.id);
+        });
+
+        function triggerIconUpload() {
+            document.getElementById('icon-upload').click();
+        }
