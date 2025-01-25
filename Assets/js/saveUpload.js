@@ -8,6 +8,7 @@ const importButton = document.getElementById("importButton");
 const imageUpload = document.getElementById('image-upload');
 const fontSizeSelector = document.getElementById('font-size');
 let isTyping = false;
+let currentNoteId = null; // Definir currentNoteId
 
 // Modal y botón de colaborar
 const collaborateButton = document.getElementById('collaborate-button');
@@ -190,12 +191,16 @@ function broadcastChange(content, originConn) {
 editor.addEventListener('input', () => {
     isTyping = true;
     const content = editor.innerHTML;
+    document.getElementById('saving-loader').style.display = 'block'; // Mostrar el loader
     connections.forEach((conn) => {
         if (conn.open) {
             conn.send({ type: 'update', content: content });
         }
     });
-    setTimeout(() => { isTyping = false; }, 100);
+    setTimeout(() => { 
+        isTyping = false; 
+        document.getElementById('saving-loader').style.display = 'none'; // Ocultar el loader
+    }, 1000);
 });
 
 // Manejo de pegado de imágenes
@@ -390,7 +395,7 @@ function changeFontSize() {
     });
 }
 
-// ...existing code...
+
 function addNoteToHistory(id, title, category, date) {
     const noteList = document.querySelector('.note-list');
     const noteItem = document.createElement('li');
@@ -423,7 +428,7 @@ function addNoteToHistory(id, title, category, date) {
         }
     });
 }
-// ...existing code...
+
 function updateNoteCategoryInHistory(id, newCategory) {
     const noteItem = document.querySelector(`a[data-id="${id}"] .note-category`);
     if (noteItem) {
@@ -437,4 +442,67 @@ function updateNoteCategoryInHistory(id, newCategory) {
         categorySpan.className = `categoria ${newCategory.toLowerCase()}`;
     }
 }
-// ...existing code...
+
+const savingLoader = document.getElementById('saving-loader');
+
+// Guardar cambios automáticamente
+editor.addEventListener('input', async () => {
+    if (currentNoteId) {
+        savingLoader.style.display = 'block';
+        await updateDoc(doc(db, 'notes', currentNoteId), {
+            content: editor.innerHTML,
+            updatedAt: new Date()
+        });
+        savingLoader.style.display = 'none';
+    }
+});
+
+
+// Actualizar nombre de la nota
+const nameInput = document.querySelector('.name-note');
+nameInput.addEventListener('input', async () => {
+    if (currentNoteId) {
+        savingLoader.style.display = 'block';
+        await updateDoc(doc(db, 'notes', currentNoteId), {
+            title: nameInput.value,
+            updatedAt: new Date()
+        });
+        updateNoteTitleInHistory(currentNoteId, nameInput.value);
+        savingLoader.style.display = 'none';
+    }
+});
+
+
+// Actualizar categoría de la nota
+const categoryDropdownItems = document.querySelectorAll('.dropdown-item');
+const categorySpan = document.querySelector('.categoria');
+categoryDropdownItems.forEach(item => {
+    item.addEventListener('click', async (e) => {
+        e.preventDefault();
+        const selectedCategory = e.target.textContent;
+        categorySpan.textContent = selectedCategory;
+        // Agregar un color a la categoría seleccionada
+        if (selectedCategory === 'Tareas') {
+            categorySpan.classList.remove('ideas');
+            categorySpan.classList.remove('proyectos');
+            categorySpan.classList.add('tareas');
+        } else if (selectedCategory === 'Ideas') {
+            categorySpan.classList.remove('tareas');
+            categorySpan.classList.remove('proyectos');
+            categorySpan.classList.add('ideas');
+        } else if (selectedCategory === 'Proyectos') {
+            categorySpan.classList.remove('tareas');
+            categorySpan.classList.remove('ideas');
+            categorySpan.classList.add('proyectos');
+        }
+        if (currentNoteId) {
+            savingLoader.style.display = 'block';
+            await updateDoc(doc(db, 'notes', currentNoteId), {
+                category: selectedCategory,
+                updatedAt: new Date()
+            });
+            updateNoteCategoryInHistory(currentNoteId, selectedCategory);
+            savingLoader.style.display = 'none';
+        }
+    });
+});
