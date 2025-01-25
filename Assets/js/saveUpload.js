@@ -221,6 +221,42 @@ editor.addEventListener("paste", function (event) {
     }
 });
 
+// Subir imagen a Cloudinary
+imageUpload.addEventListener('change', async (event) => {
+    const file = event.target.files[0];
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
+
+    const response = await fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`, {
+        method: 'POST',
+        body: formData
+    });
+
+    const data = await response.json();
+    const imageUrl = data.secure_url;
+
+    // Insertar imagen en el editor
+    insertImageInEditor(imageUrl);
+
+    // Guardar imagen en Firebase
+    if (currentNoteId) {
+        const noteDoc = await getDoc(doc(db, 'notes', currentNoteId));
+        const images = noteDoc.data().images || [];
+        images.push({
+            url: imageUrl,
+            width: '300px',
+            height: 'auto',
+            left: '0px',
+            top: '0px'
+        });
+        await updateDoc(doc(db, 'notes', currentNoteId), {
+            images: images,
+            updatedAt: new Date()
+        });
+    }
+});
+
 function insertImageInEditor(base64Image) {
     const img = document.createElement("img");
     img.src = base64Image;
@@ -275,6 +311,9 @@ function dragMoveListener(event) {
 
     target.setAttribute('data-x', x);
     target.setAttribute('data-y', y);
+
+    // Guardar posición en Firebase
+    saveImageProperties(target);
 }
 
 function resizeMoveListener(event) {
@@ -292,27 +331,35 @@ function resizeMoveListener(event) {
 
     target.setAttribute('data-x', x);
     target.setAttribute('data-y', y);
+
+    // Guardar tamaño en Firebase
+    saveImageProperties(target);
+}
+
+async function saveImageProperties(img) {
+    if (currentNoteId) {
+        const noteDoc = await getDoc(doc(db, 'notes', currentNoteId));
+        const images = noteDoc.data().images || [];
+        const imageIndex = images.findIndex(image => image.url === img.src);
+        if (imageIndex !== -1) {
+            images[imageIndex] = {
+                url: img.src,
+                width: img.style.width,
+                height: img.style.height,
+                left: img.style.left,
+                top: img.style.top
+            };
+            await updateDoc(doc(db, 'notes', currentNoteId), {
+                images: images,
+                updatedAt: new Date()
+            });
+        }
+    }
 }
 
 // Función para activar el input de selección de archivo
 function triggerImageUpload() {
     imageUpload.click(); // Simula un clic en el input de archivo
-}
-
-// Función para insertar imagen en el editor
-function insertImageInEditor(base64Image) {
-    if (editor) {
-        const imgElement = document.createElement('img'); // Crear elemento de imagen
-        imgElement.src = base64Image; // Asignar el contenido Base64
-        imgElement.style.maxWidth = '100%'; // Ajustar tamaño inicial
-        imgElement.style.margin = '10px 0';
-        imgElement.style.position = 'absolute'; // Para permitir arrastrar
-        imgElement.style.cursor = 'move'; // Indicador visual de interacción
-
-        editor.appendChild(imgElement); // Insertar imagen en el editor
-
-        makeImageInteractive(imgElement); // Hacer la imagen interactiva
-    }
 }
 
 // Manejar el cambio de archivo

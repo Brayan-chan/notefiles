@@ -683,6 +683,7 @@
                     editor.innerHTML = noteDoc.data().content;
                     nameInput.value = noteDoc.data().title;
                     categorySpan.textContent = noteDoc.data().category;
+                    loadImages(noteDoc.data().images || []);
                 }
             });
         }
@@ -713,38 +714,107 @@
 
         loadNotes();
 
-        // Subir imagen a Cloudinary
-        document.getElementById('image-upload').addEventListener('change', async (event) => {
-            const file = event.target.files[0];
-            const formData = new FormData();
-            formData.append('file', file);
-            formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
-
-            const response = await fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`, {
-                method: 'POST',
-                body: formData
-            });
-
-            const data = await response.json();
-            const imageUrl = data.secure_url;
-
-            // Insertar imagen en el editor
-            const imgElement = document.createElement('img');
-            imgElement.src = imageUrl;
-            editor.appendChild(imgElement);
-
-            // Guardar cambios automáticamente
-            if (currentNoteId) {
-                await updateDoc(doc(db, 'notes', currentNoteId), {
-                    content: editor.innerHTML,
-                    updatedAt: new Date()
-                });
-            }
-        });
-
         // Función para abrir el selector de archivos
         function triggerImageUpload() {
             document.getElementById('image-upload').click();
+        }
+
+        // Hacer las imágenes interactivas
+        function makeImageInteractive(img) {
+            interact(img)
+                .draggable({
+                    inertia: true,
+                    modifiers: [
+                        interact.modifiers.restrictRect({
+                            restriction: 'parent',
+                            endOnly: true
+                        })
+                    ],
+                    autoScroll: true,
+                    listeners: {
+                        move: dragMoveListener,
+                    }
+                })
+                .resizable({
+                    edges: { left: true, right: true, bottom: true, top: true },
+                    listeners: {
+                        move: resizeMoveListener
+                    },
+                });
+        }
+
+        function dragMoveListener(event) {
+            var target = event.target;
+            var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx;
+            var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+
+            target.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
+
+            target.setAttribute('data-x', x);
+            target.setAttribute('data-y', y);
+
+            // Guardar posición en Firebase
+            saveImageProperties(target);
+        }
+
+        function resizeMoveListener(event) {
+            var target = event.target;
+            var x = (parseFloat(target.getAttribute('data-x')) || 0);
+            var y = (parseFloat(target.getAttribute('data-y')) || 0);
+
+            target.style.width = event.rect.width + 'px';
+            target.style.height = event.rect.height + 'px';
+
+            x += event.deltaRect.left;
+            y += event.deltaRect.top;
+
+            target.style.transform = 'translate(' + x + 'px,' + y + 'px)';
+
+            target.setAttribute('data-x', x);
+            target.setAttribute('data-y', y);
+
+            // Guardar tamaño en Firebase
+            saveImageProperties(target);
+        }
+
+        async function saveImageProperties(img) {
+            if (currentNoteId) {
+                const noteDoc = await getDoc(doc(db, 'notes', currentNoteId));
+                const images = noteDoc.data().images || [];
+                const imageIndex = images.findIndex(image => image.url === img.src);
+                if (imageIndex !== -1) {
+                    images[imageIndex] = {
+                        url: img.src,
+                        width: img.style.width,
+                        height: img.style.height,
+                        left: img.style.left,
+                        top: img.style.top
+                    };
+                    await updateDoc(doc(db, 'notes', currentNoteId), {
+                        images: images,
+                        updatedAt: new Date()
+                    });
+                }
+            }
+        }
+
+        function loadImages(images) {
+            images.forEach(image => {
+                insertImageInEditor(image.url, image.width, image.height, image.left, image.top);
+            });
+        }
+
+        function insertImageInEditor(url, width = '300px', height = 'auto', left = '0px', top = '0px') {
+            const imgElement = document.createElement('img');
+            imgElement.src = url;
+            imgElement.style.width = width;
+            imgElement.style.height = height;
+            imgElement.style.position = 'absolute';
+            imgElement.style.left = left;
+            imgElement.style.top = top;
+            imgElement.className = 'interactive-image';
+            editor.appendChild(imgElement);
+            makeImageInteractive(imgElement);
         }
     </script>
 
