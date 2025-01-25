@@ -389,3 +389,52 @@ function changeFontSize() {
       element.style.fontSize = fontSizeSelector.value;
     });
 }
+
+// ...existing code...
+function addNoteToHistory(id, title, category, date) {
+    const noteList = document.querySelector('.note-list');
+    const noteItem = document.createElement('li');
+    noteItem.innerHTML = `
+        <a href="#" data-id="${id}">
+            <div class="note-item">
+                <div class="note-icon">
+                    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968890.png" alt="Nota Icono">
+                </div>
+                <div class="note-details">
+                    <div class="note-title">${title}</div>
+                    <div class="note-category ${category.toLowerCase()}">${category}</div>
+                </div>
+                <div class="note-date">${date.toLocaleDateString()} <span>→</span></div>
+            </div>
+        </a>
+    `;
+    noteList.appendChild(noteItem);
+
+    noteItem.querySelector('a').addEventListener('click', async (e) => {
+        e.preventDefault();
+        const noteId = e.currentTarget.getAttribute('data-id');
+        const noteDoc = await getDoc(doc(db, 'notes', noteId));
+        if (noteDoc.exists()) {
+            currentNoteId = noteId;
+            editor.innerHTML = noteDoc.data().content;
+            nameInput.value = noteDoc.data().title;
+            categorySpan.textContent = noteDoc.data().category;
+            loadImages(noteDoc.data().images || []);
+        }
+    });
+}
+// ...existing code...
+function updateNoteCategoryInHistory(id, newCategory) {
+    const noteItem = document.querySelector(`a[data-id="${id}"] .note-category`);
+    if (noteItem) {
+        noteItem.textContent = newCategory;
+        noteItem.className = `note-category ${newCategory.toLowerCase()}`;
+    }
+    // Actualizar el span de la categoría en el editor
+    const categorySpan = document.querySelector('.categoria');
+    if (categorySpan) {
+        categorySpan.textContent = newCategory;
+        categorySpan.className = `categoria ${newCategory.toLowerCase()}`;
+    }
+}
+// ...existing code...
