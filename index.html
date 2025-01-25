@@ -614,6 +614,20 @@
                 e.preventDefault();
                 const selectedCategory = e.target.textContent;
                 categorySpan.textContent = selectedCategory;
+                // Agregar un color a la categoría seleccionada
+                if (selectedCategory === 'Tareas') {
+                    categorySpan.classList.remove('ideas');
+                    categorySpan.classList.remove('proyectos');
+                    categorySpan.classList.add('tareas');
+                } else if (selectedCategory === 'Ideas') {
+                    categorySpan.classList.remove('tareas');
+                    categorySpan.classList.remove('proyectos');
+                    categorySpan.classList.add('ideas');
+                } else if (selectedCategory === 'Proyectos') {
+                    categorySpan.classList.remove('tareas');
+                    categorySpan.classList.remove('ideas');
+                    categorySpan.classList.add('proyectos');
+                }
                 if (currentNoteId) {
                     await updateDoc(doc(db, 'notes', currentNoteId), {
                         category: selectedCategory,
@@ -652,7 +666,7 @@
                         </div>
                         <div class="note-details">
                             <div class="note-title">${title}</div>
-                            <div class="note-category">${category}</div>
+                            <div class="note-category ${category.toLowerCase()}">${category}</div>
                         </div>
                         <div class="note-date">${date.toLocaleDateString()} <span>→</span></div>
                     </div>
